@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Producer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment5</a> &gt; <a href="index.source.html" class="el_package">concurrentSolution</a> &gt; <span class="el_source">Producer.java</span></div><h1>Producer.java</h1><pre class="source lang-java linenums">package concurrentSolution;
+
+import java.util.List;
+import java.util.concurrent.BlockingDeque;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentHashMap;
+import sequentialSolution.CSVFileReader;
+
+/**
+ * Consumer class to process the data and interacts with consumer.
+ */
+public class Producer implements Runnable {
+  ConcurrentDataBucket concurrentDataBucket;
+  String studentVlePath;
+  CompleteSignal completeSignal;
+
+  /**
+   * Constructor of Producer class.
+   * @param studentVlePath studentVlePath
+   * @param concurrentDataBucket concurrentDataBucket
+   * @param completeSignal completeSignal
+   */
+<span class="fc" id="L23">  public Producer(String studentVlePath, ConcurrentDataBucket concurrentDataBucket, CompleteSignal completeSignal) {</span>
+<span class="fc" id="L24">    this.studentVlePath = studentVlePath;</span>
+<span class="fc" id="L25">    this.concurrentDataBucket = concurrentDataBucket;</span>
+<span class="fc" id="L26">    this.completeSignal = completeSignal;</span>
+<span class="fc" id="L27">  }</span>
+
+  /**
+   * function to process the data and parse into consumer process.
+   */
+  @Override
+  public void run() {
+    //System.out.println(&quot;reached1&quot;);
+<span class="fc" id="L35">    CSVFileReaderConcurrent.readDataAndStore(studentVlePath, concurrentDataBucket.getMap(), completeSignal);</span>
+<span class="fc" id="L36">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

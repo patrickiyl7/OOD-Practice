@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Menu.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab2</a> &gt; <a href="index.source.html" class="el_package">assignment2</a> &gt; <span class="el_source">Menu.java</span></div><h1>Menu.java</h1><pre class="source lang-java linenums">package assignment2;
+
+import java.util.List;
+import java.util.Objects;
+
+public class Menu {
+  private List&lt;String&gt; meals;
+  private List&lt;String&gt; desserts;
+  private List&lt;String&gt; beverages;
+  private List&lt;String&gt; drinks;
+
+  public Menu(List&lt;String&gt; meals, List&lt;String&gt; desserts, List&lt;String&gt; beverages,
+<span class="fc" id="L13">      List&lt;String&gt; drinks) {</span>
+<span class="fc" id="L14">    this.meals = meals;</span>
+<span class="fc" id="L15">    this.desserts = desserts;</span>
+<span class="fc" id="L16">    this.beverages = beverages;</span>
+<span class="fc" id="L17">    this.drinks = drinks;</span>
+<span class="fc" id="L18">  }</span>
+
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L22" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L23">      return true;</span>
+    }
+<span class="fc bfc" id="L25" title="All 2 branches covered.">    if (!(o instanceof Menu)) {</span>
+<span class="fc" id="L26">      return false;</span>
+    }
+<span class="fc" id="L28">    Menu menu = (Menu) o;</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">    return Objects.equals(meals, menu.meals) &amp;&amp;</span>
+<span class="pc bpc" id="L30" title="1 of 2 branches missed.">        Objects.equals(desserts, menu.desserts) &amp;&amp;</span>
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">        Objects.equals(beverages, menu.beverages) &amp;&amp;</span>
+<span class="pc bpc" id="L32" title="1 of 2 branches missed.">        Objects.equals(drinks, menu.drinks);</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L37">    return Objects.hash(meals, desserts, beverages, drinks);</span>
+  }
+
+  public List&lt;String&gt; getMeals() {
+<span class="fc" id="L41">    return meals;</span>
+  }
+
+  public void setMeals(List&lt;String&gt; meals) {
+<span class="fc" id="L45">    this.meals = meals;</span>
+<span class="fc" id="L46">  }</span>
+
+  public List&lt;String&gt; getDesserts() {
+<span class="fc" id="L49">    return desserts;</span>
+  }
+
+  public void setDesserts(List&lt;String&gt; desserts) {
+<span class="fc" id="L53">    this.desserts = desserts;</span>
+<span class="fc" id="L54">  }</span>
+
+  public List&lt;String&gt; getBeverages() {
+<span class="fc" id="L57">    return beverages;</span>
+  }
+
+  public void setBeverages(List&lt;String&gt; beverages) {
+<span class="fc" id="L61">    this.beverages = beverages;</span>
+<span class="fc" id="L62">  }</span>
+
+  public List&lt;String&gt; getDrinks() {
+<span class="fc" id="L65">    return drinks;</span>
+  }
+
+  public void setDrinks(List&lt;String&gt; drinks) {
+<span class="fc" id="L69">    this.drinks = drinks;</span>
+<span class="fc" id="L70">  }</span>
+
+  @Override
+  public String toString() {
+<span class="fc" id="L74">    return &quot;Menu{&quot; +</span>
+        &quot;meals=&quot; + meals +
+        &quot;, desserts=&quot; + desserts +
+        &quot;, beverages=&quot; + beverages +
+        &quot;, drinks=&quot; + drinks +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

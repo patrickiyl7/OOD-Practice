@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SeatArrangementTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-10-22T22:06:04" hostname="patrickdeMacBook-Pro.local" time="0.012">
+  <properties/>
+  <testcase name="arrangeWheelChairAccessibilitySeat" classname="SeatArrangementTest" time="0.001"/>
+  <testcase name="arrangeSeat" classname="SeatArrangementTest" time="0.009"/>
+  <testcase name="arrangeRegularSeat" classname="SeatArrangementTest" time="0.0"/>
+  <system-out><![CDATA[Hi, leader: B, the seat arrangement is complete and successful.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

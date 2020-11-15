@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ClientInfoTest" tests="24" skipped="0" failures="0" errors="0" timestamp="2019-10-07T20:52:55" hostname="patrickdeMacBook-Pro.local" time="0.009">
+  <properties/>
+  <testcase name="getPhoneSecondary" classname="ClientInfoTest" time="0.001"/>
+  <testcase name="getWeb" classname="ClientInfoTest" time="0.0"/>
+  <testcase name="getZip" classname="ClientInfoTest" time="0.0"/>
+  <testcase name="getCompanyName" classname="ClientInfoTest" time="0.0"/>
+  <testcase name="setWeb" classname="ClientInfoTest" time="0.0"/>
+  <testcase name="setZip" classname="ClientInfoTest" time="0.0"/>
+  <testcase name="getAddress" classname="ClientInfoTest" time="0.0"/>
+  <testcase name="getCity" classname="ClientInfoTest" time="0.0"/>
+  <testcase name="getFirstName" classname="ClientInfoTest" time="0.0"/>
+  <testcase name="setCounty" classname="ClientInfoTest" time="0.001"/>
+  <testcase name="getCounty" classname="ClientInfoTest" time="0.0"/>
+  <testcase name="setLastName" classname="ClientInfoTest" time="0.0"/>
+  <testcase name="getLastName" classname="ClientInfoTest" time="0.0"/>
+  <testcase name="getPhonePrimary" classname="ClientInfoTest" time="0.0"/>
+  <testcase name="setCompanyName" classname="ClientInfoTest" time="0.0"/>
+  <testcase name="setEmail" classname="ClientInfoTest" time="0.001"/>
+  <testcase name="setState" classname="ClientInfoTest" time="0.0"/>
+  <testcase name="setPhonePrimary" classname="ClientInfoTest" time="0.0"/>
+  <testcase name="setFirstName" classname="ClientInfoTest" time="0.0"/>
+  <testcase name="setPhoneSecondary" classname="ClientInfoTest" time="0.0"/>
+  <testcase name="setAddress" classname="ClientInfoTest" time="0.0"/>
+  <testcase name="getEmail" classname="ClientInfoTest" time="0.0"/>
+  <testcase name="getState" classname="ClientInfoTest" time="0.0"/>
+  <testcase name="setCity" classname="ClientInfoTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

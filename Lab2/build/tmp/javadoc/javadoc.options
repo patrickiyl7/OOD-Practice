@@ -1,0 +1,13 @@
+-classpath '/Users/yihaoli/IdeaProjects/Student_repo_Yihao_Li/Lab2/build/classes/java/main:/Users/yihaoli/IdeaProjects/Student_repo_Yihao_Li/Lab2/build/resources/main'
+-d '/Users/yihaoli/IdeaProjects/Student_repo_Yihao_Li/Lab2/build/docs/javadoc'
+-doctitle 'Lab2 1.0-SNAPSHOT API'
+-quiet 
+-windowtitle 'Lab2 1.0-SNAPSHOT API'
+'/Users/yihaoli/IdeaProjects/Student_repo_Yihao_Li/Lab2/src/main/java/Assignment1/Athlete.java'
+'/Users/yihaoli/IdeaProjects/Student_repo_Yihao_Li/Lab2/src/main/java/Assignment1/Runner.java'
+'/Users/yihaoli/IdeaProjects/Student_repo_Yihao_Li/Lab2/src/main/java/Assignment1/BaseballPlayer.java'
+'/Users/yihaoli/IdeaProjects/Student_repo_Yihao_Li/Lab2/src/main/java/Assignment1/Name.java'
+'/Users/yihaoli/IdeaProjects/Student_repo_Yihao_Li/Lab2/src/main/java/Assignment2/Menu.java'
+'/Users/yihaoli/IdeaProjects/Student_repo_Yihao_Li/Lab2/src/main/java/Assignment2/Address.java'
+'/Users/yihaoli/IdeaProjects/Student_repo_Yihao_Li/Lab2/src/main/java/Assignment2/Restaurant.java'
+'/Users/yihaoli/IdeaProjects/Student_repo_Yihao_Li/Lab2/src/main/java/Assignment3/Posn.java'

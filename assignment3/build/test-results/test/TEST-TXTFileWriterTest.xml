@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TXTFileWriterTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-10-07T20:52:56" hostname="patrickdeMacBook-Pro.local" time="0.014">
+  <properties/>
+  <testcase name="writeEmailsToFilesExceptionTest" classname="TXTFileWriterTest" time="0.002"/>
+  <testcase name="writeLettersToFiles" classname="TXTFileWriterTest" time="0.007"/>
+  <testcase name="writeEmailsToFile" classname="TXTFileWriterTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

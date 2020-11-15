@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SlothropTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-10-16T03:34:55" hostname="patrickdeMacBook-Pro.local" time="0.005">
+  <properties/>
+  <testcase name="drawerHandleRequirement" classname="SlothropTest" time="0.001"/>
+  <testcase name="doorHandleRequirement" classname="SlothropTest" time="0.001"/>
+  <testcase name="doorDrawerColorGeneration" classname="SlothropTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Furniture.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment2_Refactor</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Furniture.java</span></div><h1>Furniture.java</h1><pre class="source lang-java linenums">/**
+ * Abstract class of Furniture with details:productLine, height, width, depth, color.
+ */
+public abstract class Furniture {
+
+  String productLine;
+  Integer height;
+  Integer width;
+  Integer depth;
+  String[] color;
+
+
+  /**
+   * Constructor of the Furniture Class.
+   *
+   * @param productLine productLine.
+   * @param height height.
+   * @param width width.
+   * @param depth depth.
+   * @param color color.
+   */
+  public Furniture(String productLine, Integer height, Integer width, Integer depth,
+<span class="fc" id="L23">      String[] color) {</span>
+<span class="fc" id="L24">    this.productLine = productLine;</span>
+<span class="fc" id="L25">    this.height = height;</span>
+<span class="fc" id="L26">    this.width = width;</span>
+<span class="fc" id="L27">    this.depth = depth;</span>
+<span class="fc" id="L28">    this.color = color;</span>
+<span class="fc" id="L29">  }</span>
+
+  /**
+   * height getter.
+   *
+   * @return the height of the furniture.
+   */
+  public Integer getHeight() {
+<span class="nc" id="L37">    return height;</span>
+  }
+
+  /**
+   * height setter.
+   *
+   * @param height height.
+   */
+  public void setHeight(Integer height) {
+<span class="nc" id="L46">    this.height = height;</span>
+<span class="nc" id="L47">  }</span>
+
+  /**
+   * width getter.
+   *
+   * @return the width of the Furniture.
+   */
+  public Integer getWidth() {
+<span class="nc" id="L55">    return width;</span>
+  }
+
+  /**
+   * width setter.
+   *
+   * @param width width.
+   */
+  public void setWidth(Integer width) {
+<span class="nc" id="L64">    this.width = width;</span>
+<span class="nc" id="L65">  }</span>
+
+  /**
+   * depth getter.
+   *
+   * @return the depth of the Furniture.
+   */
+  public Integer getDepth() {
+<span class="nc" id="L73">    return depth;</span>
+  }
+
+  /**
+   * depth setter.
+   *
+   * @param depth depth.
+   */
+  public void setDepth(Integer depth) {
+<span class="nc" id="L82">    this.depth = depth;</span>
+<span class="nc" id="L83">  }</span>
+
+  /**
+   * color getter.
+   *
+   * @return the color of the Furniture.
+   */
+  public String[] getColor() {
+<span class="nc" id="L91">    return color;</span>
+  }
+
+  /**
+   * color setter.
+   *
+   * @param color color.
+   */
+  public void setColor(String[] color) {
+<span class="nc" id="L100">    this.color = color;</span>
+<span class="nc" id="L101">  }</span>
+
+  /**
+   * productLine getter.
+   *
+   * @return the brand with the size spec of the furniture.
+   */
+  public String getProductLine() {
+<span class="nc" id="L109">    return productLine;</span>
+  }
+
+  /**
+   * productLine setter.
+   *
+   * @param productLine productLine.
+   */
+  public void setProductLine(String productLine) {
+<span class="nc" id="L118">    this.productLine = productLine;</span>
+<span class="nc" id="L119">  }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

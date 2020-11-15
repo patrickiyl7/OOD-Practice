@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Luthien.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment2_Refactor</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Luthien.java</span></div><h1>Luthien.java</h1><pre class="source lang-java linenums">import java.security.InvalidParameterException;
+
+/**
+ * Luthien product line extends Cabinet Class.
+ */
+public class Luthien extends Cabinet {
+
+  /**
+   * Constructor of the Luthien product line.
+   *
+   * @param height height
+   * @param width width
+   * @param depth depth
+   * @throws Exception if it has invalid parameters.
+   */
+  public Luthien(Integer height, Integer width, Integer depth) throws Exception {
+<span class="fc" id="L17">    super(&quot;Luthien&quot;, 0, 0, 0, new String[0], 0, 0, false, false, false, &quot;Not required&quot;, &quot;Not required&quot;);</span>
+<span class="pc bpc" id="L18" title="2 of 6 branches missed.">    if (height == 36 &amp;&amp; width == 36 &amp;&amp; depth == 18) {</span>
+<span class="fc" id="L19">      this.height = 36;</span>
+<span class="fc" id="L20">      this.width = 36;</span>
+<span class="fc" id="L21">      this.depth = 18;</span>
+<span class="fc" id="L22">      this.color = colorGeneration(36);</span>
+<span class="fc" id="L23">      this.maxNumOfShelves = 3;</span>
+<span class="fc" id="L24">      this.maxNumOfDrawers = 1;</span>
+<span class="fc" id="L25">      this.isFloorMounted = true;</span>
+<span class="fc" id="L26">      this.isWallMounted = true;</span>
+<span class="fc" id="L27">      this.fixtureRequirement = false;</span>
+<span class="fc" id="L28">      this.feetRequirement = feetSuggestion(isFloorMounted, height);</span>
+<span class="fc" id="L29">      this.railRequirement = railSuggestion(isWallMounted);</span>
+<span class="fc" id="L30">      this.productLine = &quot;Luthien Half&quot;;</span>
+<span class="pc bpc" id="L31" title="3 of 6 branches missed.">    } else if (height == 18 &amp;&amp; width == 36 &amp;&amp; depth == 18) {</span>
+<span class="fc" id="L32">      this.height = 18;</span>
+<span class="fc" id="L33">      this.width = 36;</span>
+<span class="fc" id="L34">      this.depth = 18;</span>
+<span class="fc" id="L35">      this.color = colorGeneration(18);</span>
+<span class="fc" id="L36">      this.maxNumOfShelves = 1;</span>
+<span class="fc" id="L37">      this.maxNumOfDrawers = 1;</span>
+<span class="fc" id="L38">      this.isFloorMounted = true;</span>
+<span class="fc" id="L39">      this.isWallMounted = true;</span>
+<span class="fc" id="L40">      this.fixtureRequirement = false;</span>
+<span class="fc" id="L41">      this.feetRequirement = feetSuggestion(isFloorMounted, height);</span>
+<span class="fc" id="L42">      this.railRequirement = railSuggestion(isWallMounted);</span>
+<span class="fc" id="L43">      this.productLine = &quot;Luthien Quarter&quot;;</span>
+    } else {
+<span class="nc" id="L45">      throw new InvalidParameterException(&quot;Size Spec Invalid&quot;);</span>
+    }
+<span class="fc" id="L47">  }</span>
+
+  /**
+   * feetSuggestion function.
+   *
+   * @param isFloorMounted if the cabinet is installed on the floor.
+   * @param height the height of the cabinet.
+   * @return feetSuggestion
+   */
+  String feetSuggestion(Boolean isFloorMounted, int height) {
+<span class="pc bpc" id="L57" title="1 of 4 branches missed.">    if (height == 36 &amp;&amp; isFloorMounted) {</span>
+<span class="fc" id="L58">      return &quot;Optional&quot;;</span>
+<span class="pc bpc" id="L59" title="2 of 4 branches missed.">    } else if (height == 18 &amp;&amp; isFloorMounted) {</span>
+<span class="fc" id="L60">      return &quot;Required&quot;;</span>
+    } else {
+<span class="nc" id="L62">      return &quot;Not Specified&quot;;</span>
+    }
+  }
+
+  /**
+   * railSuggestion function
+   *
+   * @param isWallMounted if the cabinet is installed on the wall.
+   * @return railSuggestion
+   */
+  @Override
+  String railSuggestion(Boolean isWallMounted) {
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">    if (isWallMounted) {</span>
+<span class="fc" id="L75">      return &quot;Standard wall mount rail required.&quot;;</span>
+    } else {
+<span class="nc" id="L77">      return &quot;Not required&quot;;</span>
+    }
+  }
+
+  /**
+   * colorGeneration function
+   *
+   * @param height height
+   * @return colorGeneration
+   */
+  @Override
+  String[] colorGeneration(Integer height) {
+<span class="fc" id="L89">    return new String[]{&quot;black&quot;, &quot;bone&quot;};</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

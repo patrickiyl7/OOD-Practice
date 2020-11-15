@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Address.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab2</a> &gt; <a href="index.source.html" class="el_package">assignment2</a> &gt; <span class="el_source">Address.java</span></div><h1>Address.java</h1><pre class="source lang-java linenums">package assignment2;
+
+import java.util.Objects;
+
+public class Address {
+  private String streetAndNumber;
+  private String city;
+  private String zipCode;
+  private String state;
+  private String country;
+
+  public Address(String streetAndNumber, String city, String zipCode, String state,
+<span class="fc" id="L13">      String country) {</span>
+<span class="fc" id="L14">    this.streetAndNumber = streetAndNumber;</span>
+<span class="fc" id="L15">    this.city = city;</span>
+<span class="fc" id="L16">    this.zipCode = zipCode;</span>
+<span class="fc" id="L17">    this.state = state;</span>
+<span class="fc" id="L18">    this.country = country;</span>
+<span class="fc" id="L19">  }</span>
+
+  public String getStreetAndNumber() {
+<span class="fc" id="L22">    return streetAndNumber;</span>
+  }
+
+  public void setStreetAndNumber(String streetAndNumber) {
+<span class="fc" id="L26">    this.streetAndNumber = streetAndNumber;</span>
+<span class="fc" id="L27">  }</span>
+
+  public String getCity() {
+<span class="fc" id="L30">    return city;</span>
+  }
+
+  public void setCity(String city) {
+<span class="fc" id="L34">    this.city = city;</span>
+<span class="fc" id="L35">  }</span>
+
+  public String getZipCode() {
+<span class="fc" id="L38">    return zipCode;</span>
+  }
+
+  public void setZipCode(String zipCode) {
+<span class="fc" id="L42">    this.zipCode = zipCode;</span>
+<span class="fc" id="L43">  }</span>
+
+  public String getState() {
+<span class="fc" id="L46">    return state;</span>
+  }
+
+  public void setState(String state) {
+<span class="fc" id="L50">    this.state = state;</span>
+<span class="fc" id="L51">  }</span>
+
+  public String getCountry() {
+<span class="fc" id="L54">    return country;</span>
+  }
+
+  public void setCountry(String country) {
+<span class="fc" id="L58">    this.country = country;</span>
+<span class="fc" id="L59">  }</span>
+
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L63" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L64">      return true;</span>
+    }
+<span class="fc bfc" id="L66" title="All 2 branches covered.">    if (!(o instanceof Address)) {</span>
+<span class="fc" id="L67">      return false;</span>
+    }
+<span class="fc" id="L69">    Address address = (Address) o;</span>
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">    return Objects.equals(getStreetAndNumber(), address.getStreetAndNumber()) &amp;&amp;</span>
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">        Objects.equals(getCity(), address.getCity()) &amp;&amp;</span>
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">        Objects.equals(getZipCode(), address.getZipCode()) &amp;&amp;</span>
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">        Objects.equals(getState(), address.getState()) &amp;&amp;</span>
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">        Objects.equals(getCountry(), address.getCountry());</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L79">    return Objects.hash(getStreetAndNumber(), getCity(), getZipCode(), getState(), getCountry());</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="fc" id="L84">    return &quot;Address{&quot; +</span>
+        &quot;streetAndNumber='&quot; + streetAndNumber + '\'' +
+        &quot;, city='&quot; + city + '\'' +
+        &quot;, zipCode='&quot; + zipCode + '\'' +
+        &quot;, state='&quot; + state + '\'' +
+        &quot;, country='&quot; + country + '\'' +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

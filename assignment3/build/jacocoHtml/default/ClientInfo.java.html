@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ClientInfo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment3</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">ClientInfo.java</span></div><h1>ClientInfo.java</h1><pre class="source lang-java linenums">import java.util.Objects;
+
+/**
+ * A class to present the information of the client containing fields like firstName, lastName,
+ * companyName, address, city, county, state, zip, phonePrimary, phoneSecondary, email, web.
+ */
+public class ClientInfo {
+
+  private String firstName;
+  private String lastName;
+  private String companyName;
+  private String address;
+  private String city;
+  private String county;
+  private String state;
+  private String zip;
+  private String phonePrimary;
+  private String phoneSecondary;
+  private String email;
+  private String web;
+
+  /**
+   * Constructor of client information class.
+   *
+   * @param firstName      firstName.
+   * @param lastName       lastName.
+   * @param companyName    companyName.
+   * @param address        address.
+   * @param city           city.
+   * @param county         county.
+   * @param state          state.
+   * @param zip            zip.
+   * @param phonePrimary   primary phone number.
+   * @param phoneSecondary secondary phone number.
+   * @param email          email.
+   * @param web            web.
+   */
+  public ClientInfo(String firstName, String lastName, String companyName, String address,
+      String city, String county, String state, String zip, String phonePrimary,
+<span class="fc" id="L40">      String phoneSecondary, String email, String web) {</span>
+<span class="fc" id="L41">    this.firstName = firstName;</span>
+<span class="fc" id="L42">    this.lastName = lastName;</span>
+<span class="fc" id="L43">    this.companyName = companyName;</span>
+<span class="fc" id="L44">    this.address = address;</span>
+<span class="fc" id="L45">    this.city = city;</span>
+<span class="fc" id="L46">    this.county = county;</span>
+<span class="fc" id="L47">    this.state = state;</span>
+<span class="fc" id="L48">    this.zip = zip;</span>
+<span class="fc" id="L49">    this.phonePrimary = phonePrimary;</span>
+<span class="fc" id="L50">    this.phoneSecondary = phoneSecondary;</span>
+<span class="fc" id="L51">    this.email = email;</span>
+<span class="fc" id="L52">    this.web = web;</span>
+<span class="fc" id="L53">  }</span>
+
+  /**
+   * get the firstName of the client.
+   *
+   * @return firstName.
+   */
+  public String getFirstName() {
+<span class="fc" id="L61">    return firstName;</span>
+  }
+
+  /**
+   * set the firstName of the client.
+   *
+   * @param firstName firstName.
+   */
+  public void setFirstName(String firstName) {
+<span class="fc" id="L70">    this.firstName = firstName;</span>
+<span class="fc" id="L71">  }</span>
+
+  /**
+   * get the lastName of the client.
+   *
+   * @return lastName.
+   */
+  public String getLastName() {
+<span class="fc" id="L79">    return lastName;</span>
+  }
+
+  /**
+   * set the lastName of the client.
+   *
+   * @param lastName lastName.
+   */
+  public void setLastName(String lastName) {
+<span class="nc" id="L88">    this.lastName = lastName;</span>
+<span class="nc" id="L89">  }</span>
+
+  /**
+   * get the companyName of the client.
+   *
+   * @return companyName.
+   */
+  public String getCompanyName() {
+<span class="fc" id="L97">    return companyName;</span>
+  }
+
+  /**
+   * set the companyName of the client.
+   *
+   * @param companyName companyName.
+   */
+  public void setCompanyName(String companyName) {
+<span class="fc" id="L106">    this.companyName = companyName;</span>
+<span class="fc" id="L107">  }</span>
+
+  /**
+   * get the companyName of the client.
+   *
+   * @return address.
+   */
+  public String getAddress() {
+<span class="fc" id="L115">    return address;</span>
+  }
+
+  /**
+   * set the companyName of the client.
+   *
+   * @param address address.
+   */
+  public void setAddress(String address) {
+<span class="fc" id="L124">    this.address = address;</span>
+<span class="fc" id="L125">  }</span>
+
+  /**
+   * get the city of the client.
+   *
+   * @return city.
+   */
+  public String getCity() {
+<span class="fc" id="L133">    return city;</span>
+  }
+
+  /**
+   * set the city of the client.
+   *
+   * @param city city.
+   */
+  public void setCity(String city) {
+<span class="fc" id="L142">    this.city = city;</span>
+<span class="fc" id="L143">  }</span>
+
+  /**
+   * get the county of the client.
+   *
+   * @return county.
+   */
+  public String getCounty() {
+<span class="fc" id="L151">    return county;</span>
+  }
+
+  /**
+   * set the county of the client.
+   *
+   * @param county county.
+   */
+  public void setCounty(String county) {
+<span class="fc" id="L160">    this.county = county;</span>
+<span class="fc" id="L161">  }</span>
+
+  /**
+   * get the state of the client.
+   *
+   * @return state.
+   */
+  public String getState() {
+<span class="fc" id="L169">    return state;</span>
+  }
+
+  /**
+   * set the state of the client.
+   *
+   * @param state state.
+   */
+  public void setState(String state) {
+<span class="fc" id="L178">    this.state = state;</span>
+<span class="fc" id="L179">  }</span>
+
+  /**
+   * get the zip of the client.
+   *
+   * @return zip.
+   */
+  public String getZip() {
+<span class="fc" id="L187">    return zip;</span>
+  }
+
+  /**
+   * set the zip of the client.
+   *
+   * @param zip zip.
+   */
+  public void setZip(String zip) {
+<span class="fc" id="L196">    this.zip = zip;</span>
+<span class="fc" id="L197">  }</span>
+
+  /**
+   * get the phonePrimary of the client.
+   *
+   * @return phonePrimary.
+   */
+  public String getPhonePrimary() {
+<span class="fc" id="L205">    return phonePrimary;</span>
+  }
+
+  /**
+   * set the phonePrimary of the client.
+   *
+   * @param phonePrimary phonePrimary.
+   */
+  public void setPhonePrimary(String phonePrimary) {
+<span class="fc" id="L214">    this.phonePrimary = phonePrimary;</span>
+<span class="fc" id="L215">  }</span>
+
+  /**
+   * get the phoneSecondary of the client.
+   *
+   * @return phoneSecondary.
+   */
+  public String getPhoneSecondary() {
+<span class="fc" id="L223">    return phoneSecondary;</span>
+  }
+
+  /**
+   * set the phoneSecondary of the client.
+   *
+   * @param phoneSecondary phoneSecondary.
+   */
+  public void setPhoneSecondary(String phoneSecondary) {
+<span class="fc" id="L232">    this.phoneSecondary = phoneSecondary;</span>
+<span class="fc" id="L233">  }</span>
+
+  /**
+   * get the email of the client.
+   *
+   * @return email.
+   */
+  public String getEmail() {
+<span class="fc" id="L241">    return email;</span>
+  }
+
+  /**
+   * get the email of the client.
+   *
+   * @param email email.
+   */
+  public void setEmail(String email) {
+<span class="fc" id="L250">    this.email = email;</span>
+<span class="fc" id="L251">  }</span>
+
+  /**
+   * get the web of the client.
+   *
+   * @return web.
+   */
+  public String getWeb() {
+<span class="fc" id="L259">    return web;</span>
+  }
+
+  /**
+   * set the web of the client.
+   *
+   * @param web website.
+   */
+  public void setWeb(String web) {
+<span class="fc" id="L268">    this.web = web;</span>
+<span class="fc" id="L269">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="assignment2.RestaurantTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2019-10-05T01:48:54" hostname="patrickdeMacBook-Pro.local" time="0.002">
+  <properties/>
+  <testcase name="setRestaurantName" classname="assignment2.RestaurantTest" time="0.0"/>
+  <testcase name="testToString" classname="assignment2.RestaurantTest" time="0.0"/>
+  <testcase name="getRestaurantName" classname="assignment2.RestaurantTest" time="0.0"/>
+  <testcase name="getAddress" classname="assignment2.RestaurantTest" time="0.0"/>
+  <testcase name="getMenu" classname="assignment2.RestaurantTest" time="0.0"/>
+  <testcase name="getOpenOrClosed" classname="assignment2.RestaurantTest" time="0.0"/>
+  <testcase name="testHashCode" classname="assignment2.RestaurantTest" time="0.0"/>
+  <testcase name="setOpenOrClosed" classname="assignment2.RestaurantTest" time="0.0"/>
+  <testcase name="testEquals" classname="assignment2.RestaurantTest" time="0.0"/>
+  <testcase name="setAddress" classname="assignment2.RestaurantTest" time="0.0"/>
+  <testcase name="setMenu" classname="assignment2.RestaurantTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

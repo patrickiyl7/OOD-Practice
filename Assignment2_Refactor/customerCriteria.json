@@ -1,0 +1,11 @@
+{
+    "number of cabinets set": 1,
+    "width": 36,
+    "height": 72,
+    "depth" : 16,
+    "shelves": 5,
+    "drawers": 0,
+    "color": ["black", "brown"],
+    "wallMounted": false,
+    "floorMounted": true
+}

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Seat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment4</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Seat.java</span></div><h1>Seat.java</h1><pre class="source lang-java linenums">/**
+ * Class of Seat.
+ */
+public class Seat {
+  private String seatType;
+  private Integer seatRowNum;
+  private Integer seatColNum;
+  private GroupAttendee groupAttendee;
+  private IndividualAttendee individualAttendee;
+  private Boolean isAvailable;
+  private Boolean canCancel;
+
+  /**
+   * Constructor of Seat Class.
+   * @param seatType seatType
+   * @param seatRowNum seatRowNum
+   * @param seatColNum seatColNum
+   */
+<span class="fc" id="L19">  public Seat(String seatType, Integer seatRowNum, Integer seatColNum) {</span>
+<span class="fc" id="L20">    this.seatType = seatType;</span>
+<span class="fc" id="L21">    this.seatRowNum = seatRowNum;</span>
+<span class="fc" id="L22">    this.seatColNum = seatColNum;</span>
+<span class="fc" id="L23">    this.groupAttendee = null;</span>
+<span class="fc" id="L24">    this.individualAttendee = null;</span>
+<span class="fc" id="L25">    this.isAvailable = true;</span>
+<span class="fc" id="L26">    this.canCancel = true;</span>
+<span class="fc" id="L27">  }</span>
+
+  /**
+   * groupAttendee getter
+   * @return groupAttendee
+   */
+  public GroupAttendee getGroupAttendee() {
+<span class="fc" id="L34">    return groupAttendee;</span>
+  }
+
+  /**
+   * groupAttendee setter
+   * @param groupAttendee groupAttendee
+   */
+  public void setGroupAttendee(GroupAttendee groupAttendee) {
+<span class="fc" id="L42">    this.groupAttendee = groupAttendee;</span>
+<span class="fc" id="L43">  }</span>
+
+  /**
+   * individualAttendee getter
+   * @return individualAttendee
+   */
+  public IndividualAttendee getIndividualAttendee() {
+<span class="fc" id="L50">    return individualAttendee;</span>
+  }
+
+  /**
+   * individualAttendee setter
+   * @param individualAttendee individualAttendee
+   */
+  public void setIndividualAttendee(IndividualAttendee individualAttendee) {
+<span class="fc" id="L58">    this.individualAttendee = individualAttendee;</span>
+<span class="fc" id="L59">  }</span>
+
+  /**
+   * seat type getter
+   * @return seatType
+   */
+  public String getSeatType() {
+<span class="fc" id="L66">    return seatType;</span>
+  }
+
+  /**
+   * check the seat is available
+   * @return if the seat is available in boolean type.
+   */
+  public Boolean getAvailable() {
+<span class="fc" id="L74">    return isAvailable;</span>
+  }
+
+  /**
+   * set if the seat is available
+   * @param available available
+   */
+  public void setAvailable(boolean available) {
+<span class="fc" id="L82">    isAvailable = available;</span>
+<span class="fc" id="L83">  }</span>
+
+  /**
+   * method of printSeats, a checking in process.
+   */
+  public void printSeats()
+  {
+<span class="fc" id="L90">    this.canCancel = false;</span>
+<span class="fc" id="L91">    this.isAvailable = false;</span>
+<span class="fc" id="L92">    System.out.println(&quot;Seat PRINT request received. You have confirmed the seat assignation and can't re-select or cancel this arrangement. Thank you&quot;);</span>
+<span class="fc" id="L93">  }</span>
+
+  /**
+   * a method to cancel the current seat reservation.
+   * @param canCancel canCancel
+   */
+  public void seatCancellation(boolean canCancel)
+  {
+<span class="fc bfc" id="L101" title="All 2 branches covered.">    if(this.canCancel)</span>
+    {
+<span class="fc" id="L103">      this.isAvailable = true;</span>
+<span class="fc" id="L104">      this.groupAttendee = null;</span>
+<span class="fc" id="L105">      this.individualAttendee = null;</span>
+<span class="fc" id="L106">      System.out.println(&quot;Your seat selection has been cancelled&quot;);</span>
+    }
+    else
+    {
+<span class="fc" id="L110">      System.out.println(&quot;You have confirmed the seat assignation and can't re-select or cancel this arrangement. Thank you&quot;);</span>
+    }
+<span class="fc" id="L112">  }</span>
+
+  /**
+   * a method to get the canCancel value.
+   * @return canCancel
+   */
+  public Boolean getCanCancel() {
+<span class="fc" id="L119">    return canCancel;</span>
+  }
+
+  /**
+   * a method to set the canCancel value.
+   * @param canCancel canCancel
+   */
+  public void setCanCancel(Boolean canCancel) {
+<span class="fc" id="L127">    this.canCancel = canCancel;</span>
+<span class="fc" id="L128">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

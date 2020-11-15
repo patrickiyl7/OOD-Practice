@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>IndividualStandardComponents.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment2_Refactor</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">IndividualStandardComponents.java</span></div><h1>IndividualStandardComponents.java</h1><pre class="source lang-java linenums">public class IndividualStandardComponents {
+  private Integer numOfEighteenInchDrawer;
+  private Boolean doorHandler;
+  private Boolean drawerHandler;
+<span class="nc" id="L5">  private final Boolean doorHinge = true;</span>
+  private String standardRail;
+  private Boolean wallFixture;
+  private String cabinetFeetRequirement;
+  private Integer numOfCabinetFeet;
+<span class="nc" id="L10">  private final Integer drawerSizeSpec = 18;</span>
+
+  public Integer getDrawerSizeSpec() {
+<span class="nc" id="L13">    return drawerSizeSpec;</span>
+  }
+
+<span class="nc" id="L16">  public IndividualStandardComponents() {</span>
+<span class="nc" id="L17">    this.numOfEighteenInchDrawer = 0;</span>
+<span class="nc" id="L18">    this.doorHandler = false;</span>
+<span class="nc" id="L19">    this.drawerHandler = true;</span>
+<span class="nc" id="L20">    this.standardRail = &quot;Not Required&quot;;</span>
+<span class="nc" id="L21">    this.wallFixture = false;</span>
+<span class="nc" id="L22">    this.numOfCabinetFeet = 0;</span>
+<span class="nc" id="L23">  }</span>
+
+  public Integer getNumOfCabinetFeet() {
+<span class="nc" id="L26">    return numOfCabinetFeet;</span>
+  }
+
+  public void setNumOfCabinetFeet(int numOfCabinetFeet) {
+<span class="nc" id="L30">    this.numOfCabinetFeet = numOfCabinetFeet;</span>
+<span class="nc" id="L31">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

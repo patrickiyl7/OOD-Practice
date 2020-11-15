@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Processor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment7</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Processor.java</span></div><h1>Processor.java</h1><pre class="source lang-java linenums">import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectReader;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ * Class of Processor.
+ */
+<span class="fc" id="L20">public class Processor {</span>
+
+<span class="fc" id="L22">  public static final String basePath = System.getProperty(&quot;user.dir&quot;);</span>
+<span class="fc" id="L23">  public static final String GRAMMAR_FOLDER = basePath + &quot;/&quot; + &quot;grammars&quot; + &quot;/&quot;;</span>
+
+  /**
+   * processor function.
+   */
+  public static void processor() {
+<span class="fc" id="L29">    welcomeDisplays();</span>
+<span class="fc" id="L30">    List&lt;Grammar&gt; grammarList = loadGrammarFromJson();</span>
+<span class="fc" id="L31">    grammarSelectAndGenerate(grammarList);</span>
+<span class="fc" id="L32">  }</span>
+
+  public static String processor1() {
+<span class="nc" id="L35">    List&lt;Grammar&gt; grammarList = loadGrammarFromJson();</span>
+<span class="nc" id="L36">    Grammar selectedGrammar = grammarList.get(0);</span>
+<span class="nc" id="L37">    String entryPoint = selectedGrammar.getEntries()</span>
+<span class="nc" id="L38">        .get(new Random().nextInt(selectedGrammar.getEntries().size()));</span>
+<span class="nc" id="L39">    String resSentence = randomSentenceGenerate(entryPoint, selectedGrammar.getInnerDataMap());</span>
+    //System.out.println(resSentence);
+<span class="nc" id="L41">    return resSentence;</span>
+  }
+
+  /**
+   * function of welcomeDisplays.
+   */
+  public static void welcomeDisplays() {
+<span class="fc" id="L48">    System.out.println(&quot;Current GRAMMAR folder: &quot; + GRAMMAR_FOLDER);</span>
+<span class="fc" id="L49">    System.out.println(&quot;Loading grammars...&quot;);</span>
+<span class="fc" id="L50">  }</span>
+
+  /**
+   * loadGrammarFromJson function.
+   * @return List of Grammar.
+   */
+  public static List&lt;Grammar&gt; loadGrammarFromJson() {
+<span class="fc" id="L57">    List&lt;Grammar&gt; resGrammarList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L58">    File[] grammarFiles = new File(GRAMMAR_FOLDER).listFiles();</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">    for (File grammarFile : grammarFiles) {</span>
+<span class="fc" id="L60">      String fileName = grammarFile.getName();</span>
+      //System.out.println(grammarFile);
+<span class="fc bfc" id="L62" title="All 2 branches covered.">      if (!fileName.equals(&quot;.DS_Store&quot;)) {</span>
+<span class="fc" id="L63">        String currFileName = GRAMMAR_FOLDER + fileName;</span>
+<span class="fc" id="L64">        System.out.println(&quot;Opening: &quot; + currFileName);</span>
+<span class="fc" id="L65">        ObjectMapper mapper = new ObjectMapper();</span>
+<span class="fc" id="L66">        ObjectReader reader = mapper.reader(new TypeReference&lt;List&lt;String&gt;&gt;() {</span>
+        });
+        ;
+<span class="fc" id="L69">        String jsonContent = &quot;&quot;;</span>
+        try {
+<span class="fc" id="L71">          Grammar grammar = new Grammar();</span>
+<span class="fc" id="L72">          jsonContent = new String(Files.readAllBytes(Paths.get(currFileName)));</span>
+<span class="fc" id="L73">          JsonNode rootNode = mapper.readTree(jsonContent);</span>
+<span class="fc" id="L74">          Iterator&lt;Entry&lt;String, JsonNode&gt;&gt; fields = rootNode.fields();</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">          while (fields.hasNext()) {</span>
+<span class="fc" id="L76">            Entry&lt;String, JsonNode&gt; jsonField = fields</span>
+<span class="fc" id="L77">                .next();   // refer from https://www.baeldung.com/jackson-json-node-tree-model</span>
+<span class="fc" id="L78">            String entryKey = jsonField.getKey();</span>
+            //System.out.println(entryKey);
+<span class="fc" id="L80">            JsonNode data = jsonField.getValue();</span>
+            //System.out.println(data);
+<span class="fc" id="L82">            String currData = data.toString().substring(1, data.toString().length() - 1);</span>
+<span class="fc bfc" id="L83" title="All 2 branches covered.">            if (entryKey.equals(&quot;grammarTitle&quot;)) {</span>
+<span class="fc" id="L84">              grammar.setGrammarTitle(currData);</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">            } else if (entryKey.equals(&quot;grammarDesc&quot;)) {</span>
+<span class="fc" id="L86">              grammar.setGrammarDesc(currData);</span>
+<span class="fc bfc" id="L87" title="All 2 branches covered.">            } else if (entryKey.equals(&quot;start&quot;)) {</span>
+<span class="fc" id="L88">              grammar.setEntries(reader.readValue(data));</span>
+              //System.out.println(grammar.getEntries().get(0));
+            } else {
+              //System.out.println(entryKey);
+<span class="pc bpc" id="L92" title="1 of 2 branches missed.">              if (!grammar.getInnerDataMap().containsKey(entryKey.toLowerCase())) {</span>
+<span class="fc" id="L93">                grammar.getInnerDataMap()</span>
+<span class="fc" id="L94">                    .put(entryKey.toLowerCase(), new InnerData(entryKey, reader.readValue(data)));</span>
+              } else {
+<span class="nc" id="L96">                grammar.getInnerDataMap().get(entryKey.toLowerCase()).getData()</span>
+<span class="nc" id="L97">                    .add(reader.readValue(data));</span>
+              }
+            }
+<span class="fc" id="L100">          }</span>
+<span class="fc" id="L101">          resGrammarList.add(grammar);</span>
+<span class="nc" id="L102">        } catch (IOException e) {</span>
+<span class="nc" id="L103">          e.printStackTrace();</span>
+<span class="fc" id="L104">        }</span>
+      }
+    }
+<span class="fc" id="L107">    return resGrammarList;</span>
+  }
+
+  /**
+   * grammarSelectAndGenerate function.
+   * @param grammarList grammarList.
+   */
+  public static void grammarSelectAndGenerate(List&lt;Grammar&gt; grammarList) {
+<span class="fc" id="L115">    Scanner input = new Scanner(System.in);</span>
+<span class="fc" id="L116">    int count = 0;</span>
+    while (true) {
+<span class="fc" id="L118">      System.out.println(&quot;The following grammars are available:&quot;);</span>
+<span class="fc bfc" id="L119" title="All 2 branches covered.">      for (int i = 0; i &lt; grammarList.size(); i++) {</span>
+<span class="fc" id="L120">        Grammar grammar = grammarList.get(i);</span>
+<span class="fc" id="L121">        String availableGrammer = (i + 1) + &quot;. &quot; + grammar.getGrammarTitle();</span>
+<span class="pc bpc" id="L122" title="1 of 2 branches missed.">        if (grammar.getGrammarDesc() != null) {</span>
+<span class="fc" id="L123">          availableGrammer += &quot; ( &quot; + grammar.getGrammarDesc() + &quot;)&quot;;</span>
+        }
+<span class="fc" id="L125">        System.out.println(availableGrammer);</span>
+      }
+<span class="fc" id="L127">      String userSelection = &quot;1&quot;;</span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">      if(count &gt; 0)</span>
+      {
+<span class="fc" id="L130">        userSelection = &quot;q&quot;;</span>
+      }
+<span class="pc bpc" id="L132" title="1 of 2 branches missed.">      if(input.hasNextLine()) {</span>
+<span class="nc" id="L133">        userSelection = input.nextLine().toLowerCase().trim();</span>
+      }
+<span class="fc bfc" id="L135" title="All 2 branches covered.">      if (userSelection.equals(&quot;q&quot;)) {</span>
+<span class="fc" id="L136">        return;</span>
+      }
+<span class="fc" id="L138">      int userSelectionNum = Integer.parseInt(userSelection);</span>
+<span class="pc bpc" id="L139" title="2 of 4 branches missed.">      if (userSelectionNum &lt; 1 || userSelectionNum &gt; grammarList.size()) {</span>
+<span class="nc" id="L140">        System.out.println(&quot;Please input valid number to select the grammar.&quot;);</span>
+<span class="nc" id="L141">        System.out.println();</span>
+<span class="nc" id="L142">        continue;</span>
+      }
+<span class="fc" id="L144">      System.out.println();</span>
+<span class="fc" id="L145">      Grammar selectedGrammar = grammarList.get(userSelectionNum - 1);</span>
+<span class="fc" id="L146">      String entryPoint = selectedGrammar.getEntries()</span>
+<span class="fc" id="L147">          .get(new Random().nextInt(selectedGrammar.getEntries().size()));</span>
+<span class="fc" id="L148">      String resSentence = randomSentenceGenerate(entryPoint, selectedGrammar.getInnerDataMap());</span>
+<span class="fc" id="L149">      System.out.println(resSentence);</span>
+<span class="fc" id="L150">      System.out.println();</span>
+<span class="fc" id="L151">      System.out.println(&quot;Would you like another? (y/n)&quot;);</span>
+      while (true) {
+<span class="fc" id="L153">        userSelection = &quot;n&quot;;</span>
+<span class="pc bpc" id="L154" title="1 of 2 branches missed.">        if(input.hasNextLine()) {</span>
+<span class="nc" id="L155">          userSelection = input.nextLine().toLowerCase().trim();</span>
+        }
+<span class="pc bpc" id="L157" title="1 of 2 branches missed.">        if (userSelection.equals(&quot;y&quot;)) {</span>
+<span class="nc" id="L158">          System.out.println();</span>
+<span class="nc" id="L159">          selectedGrammar = grammarList.get(userSelectionNum - 1);</span>
+<span class="nc" id="L160">          entryPoint = selectedGrammar.getEntries()</span>
+<span class="nc" id="L161">              .get(new Random().nextInt(selectedGrammar.getEntries().size()));</span>
+<span class="nc" id="L162">          resSentence = randomSentenceGenerate(entryPoint, selectedGrammar.getInnerDataMap());</span>
+<span class="nc" id="L163">          System.out.println(resSentence);</span>
+<span class="nc" id="L164">          System.out.println(&quot; Would you like another? (y/n) &quot;);</span>
+<span class="nc" id="L165">          System.out.println();</span>
+<span class="pc bpc" id="L166" title="1 of 2 branches missed.">        } else if (userSelection.equalsIgnoreCase(&quot;n&quot;)) {</span>
+<span class="fc" id="L167">          break;</span>
+        }
+      }
+<span class="fc" id="L170">      count++;</span>
+<span class="fc" id="L171">    }</span>
+  }
+
+  /**
+   * randomSentenceGenerate function.
+   * @param entryPoint entryPoint
+   * @param innerDataHashMap innerDataHashMap
+   * @return Sentence generated.
+   */
+  public static String randomSentenceGenerate(String entryPoint,
+      HashMap&lt;String, InnerData&gt; innerDataHashMap) {
+    //System.out.println(entryPoint);
+<span class="pc bpc" id="L183" title="1 of 4 branches missed.">    if (!entryPoint.contains(&quot;&lt;&quot;) &amp;&amp; !entryPoint.contains(&quot;&gt;&quot;)) {</span>
+<span class="fc" id="L184">      return entryPoint;</span>
+    } else {
+<span class="fc" id="L186">      String nextEntryKey = entryPoint.substring(entryPoint.indexOf(&quot;&lt;&quot;) + 1, entryPoint.indexOf(&quot;&gt;&quot;));</span>
+<span class="fc" id="L187">      return randomSentenceGenerate(entryPoint.substring(0, entryPoint.indexOf(&quot;&lt;&quot;)), innerDataHashMap)</span>
+<span class="fc" id="L188">          + randomSentenceGenerate(innerDataHashMap.get(nextEntryKey).getData().get(new Random().nextInt(innerDataHashMap.get(nextEntryKey).getData().size())), innerDataHashMap)</span>
+<span class="fc" id="L189">          + randomSentenceGenerate(entryPoint.substring(entryPoint.indexOf(&quot;&gt;&quot;) + 1), innerDataHashMap);</span>
+    }
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

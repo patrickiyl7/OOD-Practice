@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="MainTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-10-07T20:52:56" hostname="patrickdeMacBook-Pro.local" time="0.021">
+  <properties/>
+  <testcase name="main" classname="MainTest" time="0.016"/>
+  <testcase name="mainTestWrongArguments" classname="MainTest" time="0.005"/>
+  <system-out><![CDATA[Error: Invalid Arguments, no --email or --letter specified.
+ Usage:
+	--email only generate email messages
+	--email-template <file> accept a filename that holds the 
+email template.
+	Required if --email is used
+
+		 --letter only generate letters
+		 --letter-template <file> accept a filename that holds 
+the email template.
+			Required if --letter is used
+
+		 --output-dir <path> accept the name of a folder, all 
+output is placed in this folder
+
+		 --csv-file <path> accept the name of the csv file to 
+process
+
+Examples:
+		 --email --email-template email-template.txt --output-dir 
+emails --csv-file customer.csv
+
+		 --letter --letter-template letter-template.txt --output
+dir letters --csv-file customer.csv
+Error: Invalid Arguments, no --email or --letter specified.
+ Usage:
+	--email only generate email messages
+	--email-template <file> accept a filename that holds the 
+email template.
+	Required if --email is used
+
+		 --letter only generate letters
+		 --letter-template <file> accept a filename that holds 
+the email template.
+			Required if --letter is used
+
+		 --output-dir <path> accept the name of a folder, all 
+output is placed in this folder
+
+		 --csv-file <path> accept the name of the csv file to 
+process
+
+Examples:
+		 --email --email-template email-template.txt --output-dir 
+emails --csv-file customer.csv
+
+		 --letter --letter-template letter-template.txt --output
+dir letters --csv-file customer.csv
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

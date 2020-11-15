@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Grammar.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment7</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Grammar.java</span></div><h1>Grammar.java</h1><pre class="source lang-java linenums">import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+/**
+ * Class Grammar consists elements like title, description and contents;
+ */
+public class Grammar {
+  private String grammarTitle;
+  private String grammarDesc;
+  private List&lt;String&gt; entries;
+  private HashMap&lt;String, InnerData&gt; innerDataMap;
+
+  /**
+   * Constructor of Grammar;
+   */
+<span class="fc" id="L17">  public Grammar() {</span>
+<span class="fc" id="L18">    this.grammarTitle = &quot;&quot;;</span>
+<span class="fc" id="L19">    this.grammarDesc = &quot;&quot;;</span>
+<span class="fc" id="L20">    this.entries = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L21">    this.innerDataMap = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L22">  }</span>
+
+  /**
+   * grammarTitle getter.
+   * @return grammarTitle.
+   */
+  public String getGrammarTitle() {
+<span class="fc" id="L29">    return grammarTitle;</span>
+  }
+
+  /**
+   * grammarTitle setter.
+   * @param grammarTitle grammarTitle
+   */
+  public void setGrammarTitle(String grammarTitle) {
+<span class="fc" id="L37">    this.grammarTitle = grammarTitle;</span>
+<span class="fc" id="L38">  }</span>
+
+  /**
+   * GrammarDescription getter.
+   * @return GrammarDescription.
+   */
+  public String getGrammarDesc() {
+<span class="fc" id="L45">    return grammarDesc;</span>
+  }
+
+  /**
+   * GrammarDescription setter.
+   * @param grammarDesc GrammarDescription
+   */
+  public void setGrammarDesc(String grammarDesc) {
+<span class="fc" id="L53">    this.grammarDesc = grammarDesc;</span>
+<span class="fc" id="L54">  }</span>
+
+  /**
+   * entries getter.
+   * @return entries.
+   */
+  public List&lt;String&gt; getEntries() {
+<span class="fc" id="L61">    return entries;</span>
+  }
+
+  /**
+   * entries setter.
+   * @param entries entries.
+   */
+  public void setEntries(List&lt;String&gt; entries) {
+<span class="fc" id="L69">    this.entries = entries;</span>
+<span class="fc" id="L70">  }</span>
+
+  /**
+   * innerDataMap getter.
+   * @return innerDataMap
+   */
+  public HashMap&lt;String, InnerData&gt; getInnerDataMap() {
+<span class="fc" id="L77">    return innerDataMap;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

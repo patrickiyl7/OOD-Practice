@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd"
+    version="6.8.0" timestamp="2019-12-02T16:35:11.089">
+<file name="/Users/yihaoli/Downloads/group_yihaoli2_karlie/group_yihaoli2_karlie/Assignment7/src/test/java/GrammarTest.java">
+<violation beginline="1" endline="1" begincolumn="1" endcolumn="33" rule="UnusedImports" ruleset="Best Practices" class="GrammarTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+Avoid unused imports such as 'org.junit.Assert'
+</violation>
+<violation beginline="8" endline="46" begincolumn="8" endcolumn="1" rule="NoPackage" ruleset="Code Style" class="GrammarTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#nopackage" priority="3">
+All classes and interfaces must belong to a named package
+</violation>
+<violation beginline="8" endline="46" begincolumn="8" endcolumn="1" rule="AtLeastOneConstructor" ruleset="Code Style" class="GrammarTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#atleastoneconstructor" priority="3">
+Each class should declare at least one constructor
+</violation>
+<violation beginline="9" endline="9" begincolumn="11" endcolumn="17" rule="BeanMembersShouldSerialize" ruleset="Error Prone" class="GrammarTest" variable="grammar" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="9" endline="9" begincolumn="3" endcolumn="34" rule="CommentDefaultAccessModifier" ruleset="Code Style" class="GrammarTest" variable="grammar" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#commentdefaultaccessmodifier" priority="3">
+To avoid mistakes add a comment at the beginning of the grammar field if you want a default access modifier
+</violation>
+<violation beginline="9" endline="9" begincolumn="3" endcolumn="34" rule="DefaultPackage" ruleset="Code Style" class="GrammarTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#defaultpackage" priority="3">
+Use explicit scoping instead of the default package private level
+</violation>
+<violation beginline="11" endline="13" begincolumn="10" endcolumn="3" rule="LinguisticNaming" ruleset="Code Style" class="GrammarTest" method="getGrammarTitle" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The getter 'getGrammarTitle' should not return void linguistically
+</violation>
+<violation beginline="12" endline="12" begincolumn="5" endcolumn="23" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" class="GrammarTest" method="getGrammarTitle" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="18" endline="18" begincolumn="5" endcolumn="23" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" class="GrammarTest" method="setGrammarTitle" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="22" endline="24" begincolumn="10" endcolumn="3" rule="LinguisticNaming" ruleset="Code Style" class="GrammarTest" method="getGrammarDesc" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The getter 'getGrammarDesc' should not return void linguistically
+</violation>
+<violation beginline="23" endline="23" begincolumn="5" endcolumn="23" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" class="GrammarTest" method="getGrammarDesc" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="29" endline="29" begincolumn="5" endcolumn="23" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" class="GrammarTest" method="setGrammarDesc" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="33" endline="35" begincolumn="10" endcolumn="3" rule="LinguisticNaming" ruleset="Code Style" class="GrammarTest" method="getEntries" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The getter 'getEntries' should not return void linguistically
+</violation>
+<violation beginline="34" endline="34" begincolumn="5" endcolumn="23" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" class="GrammarTest" method="getEntries" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="39" endline="39" begincolumn="5" endcolumn="23" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" class="GrammarTest" method="setEntries" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="43" endline="45" begincolumn="10" endcolumn="3" rule="LinguisticNaming" ruleset="Code Style" class="GrammarTest" method="getInnerDataMap" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The getter 'getInnerDataMap' should not return void linguistically
+</violation>
+<violation beginline="44" endline="44" begincolumn="5" endcolumn="23" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" class="GrammarTest" method="getInnerDataMap" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+</file>
+<file name="/Users/yihaoli/Downloads/group_yihaoli2_karlie/group_yihaoli2_karlie/Assignment7/src/test/java/InnerDataTest.java">
+<violation beginline="1" endline="1" begincolumn="1" endcolumn="33" rule="UnusedImports" ruleset="Best Practices" class="InnerDataTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+Avoid unused imports such as 'org.junit.Assert'
+</violation>
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Best Practices" class="InnerDataTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+Avoid unused imports such as 'java.util.ArrayList'
+</violation>
+<violation beginline="7" endline="13" begincolumn="8" endcolumn="1" rule="NoPackage" ruleset="Code Style" class="InnerDataTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#nopackage" priority="3">
+All classes and interfaces must belong to a named package
+</violation>
+<violation beginline="7" endline="13" begincolumn="8" endcolumn="1" rule="AtLeastOneConstructor" ruleset="Code Style" class="InnerDataTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#atleastoneconstructor" priority="3">
+Each class should declare at least one constructor
+</violation>
+<violation beginline="8" endline="8" begincolumn="13" endcolumn="21" rule="BeanMembersShouldSerialize" ruleset="Error Prone" class="InnerDataTest" variable="innerData" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="8" endline="8" begincolumn="3" endcolumn="49" rule="CommentDefaultAccessModifier" ruleset="Code Style" class="InnerDataTest" variable="innerData" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#commentdefaultaccessmodifier" priority="3">
+To avoid mistakes add a comment at the beginning of the innerData field if you want a default access modifier
+</violation>
+<violation beginline="8" endline="8" begincolumn="3" endcolumn="49" rule="DefaultPackage" ruleset="Code Style" class="InnerDataTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#defaultpackage" priority="3">
+Use explicit scoping instead of the default package private level
+</violation>
+<violation beginline="10" endline="12" begincolumn="10" endcolumn="3" rule="LinguisticNaming" ruleset="Code Style" class="InnerDataTest" method="getData" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The getter 'getData' should not return void linguistically
+</violation>
+<violation beginline="11" endline="11" begincolumn="5" endcolumn="23" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" class="InnerDataTest" method="getData" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+</file>
+<file name="/Users/yihaoli/Downloads/group_yihaoli2_karlie/group_yihaoli2_karlie/Assignment7/src/test/java/mainTest.java">
+<violation beginline="1" endline="1" begincolumn="1" endcolumn="33" rule="UnusedImports" ruleset="Best Practices" class="mainTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+Avoid unused imports such as 'org.junit.Assert'
+</violation>
+<violation beginline="5" endline="11" begincolumn="8" endcolumn="1" rule="NoPackage" ruleset="Code Style" class="mainTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#nopackage" priority="3">
+All classes and interfaces must belong to a named package
+</violation>
+<violation beginline="5" endline="11" begincolumn="8" endcolumn="1" rule="AtLeastOneConstructor" ruleset="Code Style" class="mainTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#atleastoneconstructor" priority="3">
+Each class should declare at least one constructor
+</violation>
+<violation beginline="5" endline="11" begincolumn="8" endcolumn="1" rule="ClassNamingConventions" ruleset="Code Style" class="mainTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#classnamingconventions" priority="1">
+The class name 'mainTest' doesn't match '[A-Z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="8" endline="10" begincolumn="10" endcolumn="3" rule="JUnitTestsShouldIncludeAssert" ruleset="Best Practices" class="mainTest" method="main" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_bestpractices.html#junittestsshouldincludeassert" priority="3">
+JUnit tests should include assert() or fail()
+</violation>
+</file>
+</pmd>

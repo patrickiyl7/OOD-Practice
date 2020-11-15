@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FurnitureDatabase.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment2_Refactor</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">FurnitureDatabase.java</span></div><h1>FurnitureDatabase.java</h1><pre class="source lang-java linenums">import java.util.ArrayList;
+import java.util.List;
+
+public class FurnitureDatabase {
+
+  List&lt;Cabinet&gt; cabinetProducts;
+  List&lt;DoorAndDrawer&gt; drawerFrontProducts;
+  List&lt;DoorAndDrawer&gt; doorProducts;
+
+<span class="nc" id="L10">  public FurnitureDatabase() throws Exception {</span>
+<span class="nc" id="L11">    cabinetProducts = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L12">    drawerFrontProducts = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L13">    doorProducts = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L14">    Yossarian yossarianWardrobe = new Yossarian(72, 36, 16);</span>
+<span class="nc" id="L15">    Yossarian yossarianHalf = new Yossarian(36, 36, 16);</span>
+<span class="nc" id="L16">    Yossarian yossarianQuarter = new Yossarian(18, 36, 16);</span>
+<span class="nc" id="L17">    Luthien luthienHalf = new Luthien(36, 36, 18);</span>
+<span class="nc" id="L18">    Luthien luthienQuarter = new Luthien(18, 36, 18);</span>
+<span class="nc" id="L19">    Atreides atreidesHalf = new Atreides(36, 36, 16);</span>
+<span class="nc" id="L20">    Atreides atreidesQuarter = new Atreides(18, 36, 16);</span>
+<span class="nc" id="L21">    cabinetProducts.add(yossarianWardrobe);</span>
+<span class="nc" id="L22">    cabinetProducts.add(yossarianHalf);</span>
+<span class="nc" id="L23">    cabinetProducts.add(yossarianQuarter);</span>
+<span class="nc" id="L24">    cabinetProducts.add(luthienHalf);</span>
+<span class="nc" id="L25">    cabinetProducts.add(luthienQuarter);</span>
+<span class="nc" id="L26">    cabinetProducts.add(atreidesHalf);</span>
+<span class="nc" id="L27">    cabinetProducts.add(atreidesQuarter);</span>
+
+<span class="nc" id="L29">    Slothrop slothropWardrobe = new Slothrop(72, 36, 0, new String[]{&quot;brown&quot;, &quot;black&quot;});</span>
+<span class="nc" id="L30">    Slothrop slothropHalf = new Slothrop(36, 36, 0, new String[]{&quot;brown&quot;, &quot;black&quot;});</span>
+<span class="nc" id="L31">    Belacqua belacquaWardrobe = new Belacqua(72, 36, 0, new String[]{&quot;bone&quot;, &quot;oxblood&quot;});</span>
+<span class="nc" id="L32">    Belacqua belacquaHalf = new Belacqua(36, 36, 0, new String[]{&quot;bone&quot;, &quot;oxblood&quot;});</span>
+<span class="nc" id="L33">    Belacqua belacquaQuater = new Belacqua(18, 36, 0, new String[]{&quot;bone&quot;, &quot;oxblood&quot;});</span>
+<span class="nc" id="L34">    GagaDoor gagaDoorQuater = new GagaDoor(18, 38, 0,</span>
+        new String[]{&quot;brown&quot;, &quot;black&quot;, &quot;bone&quot;, &quot;oxblood&quot;});
+<span class="nc" id="L36">    doorProducts.add(slothropWardrobe);</span>
+<span class="nc" id="L37">    doorProducts.add(slothropHalf);</span>
+<span class="nc" id="L38">    doorProducts.add(belacquaWardrobe);</span>
+<span class="nc" id="L39">    doorProducts.add(belacquaHalf);</span>
+<span class="nc" id="L40">    doorProducts.add(belacquaQuater);</span>
+<span class="nc" id="L41">    doorProducts.add(gagaDoorQuater);</span>
+<span class="nc" id="L42">  }</span>
+
+  public List&lt;Cabinet&gt; getCabinetProducts() {
+<span class="nc" id="L45">    return cabinetProducts;</span>
+  }
+
+  public void setCabinetProducts(List&lt;Cabinet&gt; cabinetProducts) {
+<span class="nc" id="L49">    this.cabinetProducts = cabinetProducts;</span>
+<span class="nc" id="L50">  }</span>
+
+  public List&lt;DoorAndDrawer&gt; getDrawerFrontProducts() {
+<span class="nc" id="L53">    return drawerFrontProducts;</span>
+  }
+
+  public void setDrawerFrontProducts(List&lt;DoorAndDrawer&gt; drawerFrontProducts) {
+<span class="nc" id="L57">    this.drawerFrontProducts = drawerFrontProducts;</span>
+<span class="nc" id="L58">  }</span>
+
+  public List&lt;DoorAndDrawer&gt; getDoorProducts() {
+<span class="nc" id="L61">    return doorProducts;</span>
+  }
+
+  public void setDoorProducts(List&lt;DoorAndDrawer&gt; doorProducts) {
+<span class="nc" id="L65">    this.doorProducts = doorProducts;</span>
+<span class="nc" id="L66">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

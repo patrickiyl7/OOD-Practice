@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SeatArrangement.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment4</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">SeatArrangement.java</span></div><h1>SeatArrangement.java</h1><pre class="source lang-java linenums">import java.util.List;
+
+/**
+ * Seat arrangement Class.
+ */
+public class SeatArrangement {
+
+  Request request;
+  Venue venue;
+
+  /**
+   * Constructor of Seat arrangement class.
+   * @param request request
+   * @param venue venue
+   */
+<span class="fc" id="L16">  public SeatArrangement(Request request, Venue venue) {</span>
+<span class="fc" id="L17">    this.request = request;</span>
+<span class="fc" id="L18">    this.venue = venue;</span>
+<span class="fc" id="L19">  }</span>
+
+  /**
+   * function to arrange the seat according to request type
+   * and return certain print messages.
+   * @return if the arrangement is successful.
+   */
+  public boolean arrangeSeat() {
+<span class="fc" id="L27">    String requestType = request.getRequestType();</span>
+<span class="fc" id="L28">    String leaderName = request.getContactPersonUserName();</span>
+<span class="pc bpc" id="L29" title="3 of 4 branches missed.">    if (venue.remainSeatOverAll() == 0 &amp;&amp; venue.compromisedSeatArrangement() == 0) {</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">      if (requestType == &quot;Group&quot;) {</span>
+<span class="nc" id="L31">        System.out.println(&quot;Hi, leader &quot; + leaderName + &quot;The Venue is full. Please come next time&quot;);</span>
+      } else {
+<span class="nc" id="L33">        System.out.println(&quot;Hi, &quot; + &quot;The Venue is full. Please come next time&quot;);</span>
+      }
+<span class="nc" id="L35">      return false;</span>
+    }
+<span class="fc" id="L37">    int regularSeatReq = request.getNumRegularSeats();</span>
+<span class="fc" id="L38">    int wheelAccessibilitySeatReq = request.getNumWheelAccessibilitySeats();</span>
+
+<span class="fc" id="L40">    int regularSeatFulfill = 0;</span>
+<span class="fc" id="L41">    int wheelAccessibilitySeatFulfill = 0;</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">    if (requestType == &quot;group&quot;) {</span>
+<span class="fc" id="L43">      Group group = request.getGroup();</span>
+<span class="fc" id="L44">      int regularSeatArrangementStartPoint = group.numWheelAccessibility;</span>
+<span class="fc" id="L45">      boolean resWCASeat = arrangeWheelChairAccessibilitySeat(wheelAccessibilitySeatReq, wheelAccessibilitySeatFulfill, venue, group);</span>
+<span class="fc" id="L46">      boolean resRegular = arrangeRegularSeat(regularSeatReq, regularSeatFulfill, venue, group, regularSeatArrangementStartPoint);</span>
+<span class="pc bpc" id="L47" title="2 of 4 branches missed.">      if(resWCASeat &amp;&amp; resRegular)</span>
+      {
+<span class="fc" id="L49">        System.out.println(&quot;Hi, leader: &quot; + leaderName + &quot;, the seat arrangement is complete and successful.&quot;);</span>
+<span class="fc" id="L50">        return true;</span>
+      }
+      else
+      {
+<span class="nc" id="L54">        return false;</span>
+      }
+    } else {
+<span class="fc bfc" id="L57" title="All 2 branches covered.">      if (regularSeatReq == 1) {</span>
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">        for (int i = 0; i &lt; venue.getNumSectionRow(); i++) {</span>
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">          for (int j = 0; j &lt; venue.getNumSectionCol(); j++) {</span>
+<span class="fc" id="L60">            Section currSection = venue.getSections()[i][j];</span>
+<span class="pc bpc" id="L61" title="1 of 2 branches missed.">            for(int m = 0; m &lt; currSection.getRowCapacity(); m++) {</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">              for (int n = 0; n &lt; currSection.getColCapacity(); n++) {</span>
+<span class="fc" id="L63">                Seat currSeat = currSection.getSeat()[m][n];</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">                if (currSeat.getAvailable()) {</span>
+<span class="fc" id="L65">                  currSeat.setAvailable(false);</span>
+<span class="fc" id="L66">                  currSeat.setIndividualAttendee(request.getIndividualAttendee());</span>
+<span class="fc" id="L67">                  return true;</span>
+                }
+
+              }
+            }
+          }
+        }
+      }
+<span class="pc bpc" id="L75" title="1 of 2 branches missed.">      else if(wheelAccessibilitySeatReq == 1)</span>
+      {
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">        for (int i = 0; i &lt; venue.getNumSectionRow(); i++) {</span>
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">          for (int j = 0; j &lt; venue.getNumSectionCol(); j++) {</span>
+<span class="fc" id="L79">            Section currSection = venue.getSections()[i][j];</span>
+<span class="fc bfc" id="L80" title="All 2 branches covered.">            for (int n = 0; n &lt; currSection.getColCapacity(); n++) {</span>
+<span class="fc" id="L81">              Seat currSeat = currSection.getSeat()[0][n];</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">              if (currSeat.getAvailable()) {</span>
+<span class="fc" id="L83">                currSeat.setAvailable(false);</span>
+<span class="fc" id="L84">                currSeat.setIndividualAttendee(request.getIndividualAttendee());</span>
+<span class="fc" id="L85">                return true;</span>
+              }
+            }
+          }
+        }
+      }
+    }
+
+<span class="nc" id="L93">    return false;</span>
+  }
+
+  /**
+   * arrangeWheelChairAccessibilitySeat
+   * @param wheelAccessibilitySeatReq wheelAccessibilitySeatReq
+   * @param wheelAccessibilitySeatFulfill wheelAccessibilitySeatFulfill
+   * @param venue venue
+   * @param group group
+   * @return if the arrangement is successful.
+   */
+  public boolean arrangeWheelChairAccessibilitySeat(int wheelAccessibilitySeatReq,
+      int wheelAccessibilitySeatFulfill, Venue venue, Group group) {
+<span class="pc bpc" id="L106" title="1 of 2 branches missed.">    for (int i = 0; i &lt; venue.getNumSectionRow(); i++) {</span>
+<span class="pc bpc" id="L107" title="1 of 2 branches missed.">      for (int j = 0; j &lt; venue.getNumSectionCol(); j++) {</span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">        if (wheelAccessibilitySeatFulfill == wheelAccessibilitySeatReq) {</span>
+<span class="fc" id="L109">          return true;</span>
+        }
+<span class="fc" id="L111">        Section currSection = venue.getSections()[i][j];</span>
+<span class="pc bpc" id="L112" title="1 of 2 branches missed.">        for (int n = 0; n &lt; currSection.getColCapacity(); n++) {</span>
+<span class="fc" id="L113">          Seat currSeat = currSection.getSeat()[0][n];</span>
+<span class="pc bpc" id="L114" title="1 of 2 branches missed.">          if (currSeat.getAvailable()) {</span>
+<span class="fc" id="L115">            currSeat.setAvailable(false);</span>
+<span class="fc" id="L116">            currSeat.setGroupAttendee(group.groupAttendeeList.get(wheelAccessibilitySeatFulfill));</span>
+<span class="fc" id="L117">            wheelAccessibilitySeatFulfill++;</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">            if (wheelAccessibilitySeatFulfill == wheelAccessibilitySeatReq) {</span>
+<span class="fc" id="L119">              break;</span>
+            }
+          }
+        }
+      }
+    }
+<span class="nc" id="L125">    System.out.println(&quot;Hi, leader: &quot; + group.groupLeader.getUserName() + &quot;, the seat arrangement is complete but &quot; + (wheelAccessibilitySeatReq - wheelAccessibilitySeatFulfill) + &quot; wheelchair accessibility seats arrangement unsuccessful&quot;);</span>
+<span class="nc" id="L126">    return false;</span>
+  }
+
+  /**
+   * arrangeRegularSeat
+   * @param regularSeatReq regularSeatReq
+   * @param regularSeatFulfill regularSeatFulfill
+   * @param venue venue
+   * @param group group
+   * @param regularSeatArrangementStartPoint regularSeatArrangementStartPoint
+   * @return if the arrangement is successful.
+   */
+  public boolean arrangeRegularSeat(int regularSeatReq,
+      int regularSeatFulfill, Venue venue, Group group, int regularSeatArrangementStartPoint) {
+<span class="pc bpc" id="L140" title="1 of 2 branches missed.">    for (int i = 0; i &lt; venue.getNumSectionRow(); i++) {</span>
+<span class="pc bpc" id="L141" title="1 of 2 branches missed.">      for (int j = 0; j &lt; venue.getNumSectionCol(); j++) {</span>
+<span class="fc bfc" id="L142" title="All 2 branches covered.">        if (regularSeatReq == regularSeatFulfill) {</span>
+<span class="fc" id="L143">          return true;</span>
+        }
+<span class="fc" id="L145">        Section currSection = venue.getSections()[i][j];</span>
+<span class="pc bpc" id="L146" title="1 of 2 branches missed.">        for(int m = 0; m &lt; currSection.getRowCapacity(); m++) {</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">          if (regularSeatFulfill == regularSeatReq) {</span>
+<span class="fc" id="L148">            break;</span>
+          }
+<span class="fc bfc" id="L150" title="All 2 branches covered.">          for (int n = 0; n &lt; currSection.getColCapacity(); n++) {</span>
+<span class="fc" id="L151">            Seat currSeat = currSection.getSeat()[m][n];</span>
+<span class="fc bfc" id="L152" title="All 2 branches covered.">            if (currSeat.getAvailable()) {</span>
+<span class="fc" id="L153">              currSeat.setAvailable(false);</span>
+<span class="fc" id="L154">              currSeat</span>
+<span class="fc" id="L155">                  .setGroupAttendee(group.groupAttendeeList.get(regularSeatArrangementStartPoint));</span>
+<span class="fc" id="L156">              regularSeatFulfill++;</span>
+<span class="fc bfc" id="L157" title="All 2 branches covered.">              if (regularSeatFulfill == regularSeatReq) {</span>
+<span class="fc" id="L158">                break;</span>
+              }
+            }
+
+          }
+        }
+      }
+    }
+<span class="nc" id="L166">    System.out.println(&quot;Hi, leader: &quot; + group.groupLeader.getUserName() + &quot;, the seat arrangement is complete but &quot; + (regularSeatReq - regularSeatFulfill) + &quot; regular seats arrangement unsuccessful&quot;);</span>
+
+<span class="nc" id="L168">    return false;</span>
+
+  }
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

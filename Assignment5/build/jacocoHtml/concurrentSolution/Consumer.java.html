@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Consumer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment5</a> &gt; <a href="index.source.html" class="el_package">concurrentSolution</a> &gt; <span class="el_source">Consumer.java</span></div><h1>Consumer.java</h1><pre class="source lang-java linenums">package concurrentSolution;
+
+import java.util.HashMap;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentHashMap;
+import sequentialSolution.CSVFileWriter;
+
+/**
+ * Consumer class to process the data and write out to csv files.
+ */
+public class Consumer implements Runnable {
+
+  String currentCourse;
+  CompleteSignal completeSignal;
+  BlockingQueue&lt;String[]&gt; blockingQueue;
+  ConcurrentHashMap&lt;String, Integer&gt; latestDataPair;
+  Integer threshold;
+
+  /**
+   * Constructor of consumer class.
+   * @param currentCourse currentCourse
+   * @param completeSignal completeSignal
+   * @param blockingQueue blockingQueue
+   * @param latestDataPair latestDataPair
+   * @param threshold threshold
+   */
+  public Consumer(String currentCourse, CompleteSignal completeSignal,
+      BlockingQueue&lt;String[]&gt; blockingQueue,
+<span class="fc" id="L29">      ConcurrentHashMap&lt;String, Integer&gt; latestDataPair, Integer threshold) {</span>
+<span class="fc" id="L30">    this.currentCourse = currentCourse;</span>
+<span class="fc" id="L31">    this.completeSignal = completeSignal;</span>
+<span class="fc" id="L32">    this.blockingQueue = blockingQueue;</span>
+<span class="fc" id="L33">    this.latestDataPair = latestDataPair;</span>
+<span class="fc" id="L34">    this.threshold = threshold;</span>
+<span class="fc" id="L35">  }</span>
+
+  /**
+   * function to process the data and write out to csv files.
+   */
+  @Override
+  public void run() {
+    //System.out.println(currentCourse);
+<span class="fc bfc" id="L43" title="All 4 branches covered.">    while(!completeSignal.getCompleted() || blockingQueue.size() &gt; 0)</span>
+    {
+      //System.out.println(currentCourse);
+      //System.out.println(completeSignal.getCompleted());
+      //System.out.println(blockingQueue.size());
+<span class="fc" id="L48">      String[] currDateClickPair = new String[0];</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">      if(blockingQueue.size() &gt; 0)</span>
+      {
+        try {
+<span class="fc" id="L52">          currDateClickPair = blockingQueue.take();</span>
+<span class="nc" id="L53">        } catch (InterruptedException e) {</span>
+<span class="nc" id="L54">          e.printStackTrace();</span>
+<span class="fc" id="L55">        }</span>
+      }
+<span class="fc bfc" id="L57" title="All 2 branches covered.">      if(currDateClickPair.length == 2)</span>
+      {
+<span class="fc" id="L59">        int prevClick = 0;</span>
+<span class="fc" id="L60">        int currClick = 0;</span>
+        //System.out.println(currDateClickPair[0]);
+<span class="fc bfc" id="L62" title="All 2 branches covered.">        if(this.latestDataPair.containsKey(currDateClickPair[0]))</span>
+        {
+<span class="fc" id="L64">          prevClick = this.latestDataPair.get(currDateClickPair[0]);</span>
+        }
+        else
+        {
+<span class="fc" id="L68">          this.latestDataPair.put(currDateClickPair[0], 0);</span>
+        }
+
+<span class="fc" id="L71">        currClick = Integer.parseInt(currDateClickPair[1]);</span>
+<span class="fc" id="L72">        currClick += prevClick;</span>
+<span class="fc" id="L73">        latestDataPair.put(currDateClickPair[0], currClick);</span>
+      }
+      //System.out.println(currDateClickPair[0]);
+      //System.out.println(currDateClickPair[1]);
+
+      //int currClick = Integer.parseInt(currDateClickPair[1]) + latestDataPair.getOrDefault(currDateClickPair[0], 0);
+      //latestDataPair.put(&quot;7&quot;,7);
+<span class="fc" id="L80">    }</span>
+    //System.out.println(currentCourse);
+    //System.out.println(latestDataPair.keySet());
+<span class="fc" id="L83">    CSVFileWriterConcurrent.writeDataToFilesConcurrent(currentCourse, latestDataPair);</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">    for(Integer clickNum : latestDataPair.values())</span>
+    {
+<span class="fc bfc" id="L86" title="All 2 branches covered.">      if(clickNum &gt;= threshold)</span>
+      {
+<span class="fc" id="L88">        CSVFileWriterConcurrent.writeActivityThresholdToFilesConcurrent(&quot;activity-threshold&quot;, currentCourse, latestDataPair);</span>
+      }
+<span class="fc" id="L90">    }</span>
+<span class="fc" id="L91">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

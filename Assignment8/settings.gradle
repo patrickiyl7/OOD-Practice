@@ -1,0 +1,3 @@
+rootProject.name = 'Assignment8'
+include 'Server'
+

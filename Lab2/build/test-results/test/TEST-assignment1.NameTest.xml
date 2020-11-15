@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="assignment1.NameTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2019-10-05T01:48:54" hostname="patrickdeMacBook-Pro.local" time="0.002">
+  <properties/>
+  <testcase name="testToString" classname="assignment1.NameTest" time="0.0"/>
+  <testcase name="setMidName" classname="assignment1.NameTest" time="0.001"/>
+  <testcase name="getFirstName" classname="assignment1.NameTest" time="0.0"/>
+  <testcase name="setLastName" classname="assignment1.NameTest" time="0.0"/>
+  <testcase name="getLastName" classname="assignment1.NameTest" time="0.0"/>
+  <testcase name="testHashCode" classname="assignment1.NameTest" time="0.0"/>
+  <testcase name="testEquals" classname="assignment1.NameTest" time="0.0"/>
+  <testcase name="setFirstName" classname="assignment1.NameTest" time="0.0"/>
+  <testcase name="getMidName" classname="assignment1.NameTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="LuthienTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-10-16T03:34:55" hostname="patrickdeMacBook-Pro.local" time="0.006">
+  <properties/>
+  <testcase name="railSuggestion" classname="LuthienTest" time="0.001"/>
+  <testcase name="feetSuggestion" classname="LuthienTest" time="0.0"/>
+  <testcase name="colorGeneration" classname="LuthienTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

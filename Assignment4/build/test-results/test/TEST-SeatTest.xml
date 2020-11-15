@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SeatTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2019-10-22T22:06:04" hostname="patrickdeMacBook-Pro.local" time="0.01">
+  <properties/>
+  <testcase name="getIndividualAttendee" classname="SeatTest" time="0.001"/>
+  <testcase name="getSeatType" classname="SeatTest" time="0.0"/>
+  <testcase name="getAvailable" classname="SeatTest" time="0.0"/>
+  <testcase name="getCanCancel" classname="SeatTest" time="0.0"/>
+  <testcase name="setGroupAttendee" classname="SeatTest" time="0.0"/>
+  <testcase name="printSeats" classname="SeatTest" time="0.0"/>
+  <testcase name="setIndividualAttendee" classname="SeatTest" time="0.001"/>
+  <testcase name="setAvailable" classname="SeatTest" time="0.0"/>
+  <testcase name="seatCantCancellation" classname="SeatTest" time="0.001"/>
+  <testcase name="seatCancellation" classname="SeatTest" time="0.0"/>
+  <testcase name="setCanCancel" classname="SeatTest" time="0.0"/>
+  <testcase name="getGroupAttendee" classname="SeatTest" time="0.0"/>
+  <system-out><![CDATA[Seat PRINT request received. You have confirmed the seat assignation and can't re-select or cancel this arrangement. Thank you
+You have confirmed the seat assignation and can't re-select or cancel this arrangement. Thank you
+Your seat selection has been cancelled
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

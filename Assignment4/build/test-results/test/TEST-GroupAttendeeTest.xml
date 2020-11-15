@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="GroupAttendeeTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2019-10-22T22:06:04" hostname="patrickdeMacBook-Pro.local" time="0.005">
+  <properties/>
+  <testcase name="setGroup" classname="GroupAttendeeTest" time="0.0"/>
+  <testcase name="setTitle" classname="GroupAttendeeTest" time="0.0"/>
+  <testcase name="getGroup" classname="GroupAttendeeTest" time="0.001"/>
+  <testcase name="getTitle" classname="GroupAttendeeTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

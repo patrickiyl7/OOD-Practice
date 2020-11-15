@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TXTFileWriter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment3</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">TXTFileWriter.java</span></div><h1>TXTFileWriter.java</h1><pre class="source lang-java linenums">import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * A class to write the TXT files.
+ */
+public class TXTFileWriter {
+
+  /**
+   * Constructor of the TXTFileWriter class.
+   */
+<span class="fc" id="L18">  public TXTFileWriter() {</span>
+<span class="fc" id="L19">  }</span>
+
+  /**
+   * write out the data to the TXT files using email templates.
+   *
+   * @param emailTemplate     path of the current TXT file.
+   * @param clientInfo        info of the client.
+   * @param txtOutputFilePath output path of the file.
+   */
+  public static void writeEmailsToFiles(List&lt;String&gt; emailTemplate, ClientInfo clientInfo,
+      String txtOutputFilePath) {
+<span class="fc" id="L30">    final String fileName =</span>
+<span class="fc" id="L31">        System.getProperty(&quot;user.dir&quot;) + &quot;/&quot; + txtOutputFilePath + &quot;/&quot; + &quot;Email_for_&quot;</span>
+<span class="fc" id="L32">            + clientInfo.getFirstName() + &quot;.&quot; + clientInfo.getLastName() + &quot;.txt&quot;;</span>
+<span class="fc" id="L33">    File dataOfEmailFiles = new File(fileName);</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">    if (dataOfEmailFiles.exists()) {</span>
+<span class="fc" id="L35">      throw new IllegalArgumentException(&quot;File already exists&quot;);</span>
+    } else {
+      try {
+<span class="fc" id="L38">        dataOfEmailFiles.createNewFile();</span>
+<span class="nc" id="L39">      } catch (Exception e) {</span>
+<span class="nc" id="L40">        e.printStackTrace();</span>
+<span class="fc" id="L41">      }</span>
+      try {
+<span class="fc" id="L43">        FileWriter fileW = new FileWriter(fileName);</span>
+<span class="fc" id="L44">        BufferedWriter buffW = new BufferedWriter(fileW);</span>
+<span class="fc" id="L45">        StringBuilder sb = new StringBuilder();</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        for (String line : emailTemplate) {</span>
+<span class="fc" id="L47">          line = line.replaceAll(&quot;\\[\\[email&quot;, clientInfo.getEmail());</span>
+<span class="fc" id="L48">          line = line.replaceAll(&quot;\\[\\[first_name&quot;, clientInfo.getFirstName());</span>
+<span class="fc" id="L49">          line = line.replaceAll(&quot;\\[\\[last_name&quot;, clientInfo.getLastName());</span>
+<span class="fc" id="L50">          line = line.replaceAll(&quot;\\]&quot;, &quot;&quot;);</span>
+<span class="fc" id="L51">          sb.append(line);</span>
+<span class="fc" id="L52">          sb.append(&quot;\n&quot;);</span>
+<span class="fc" id="L53">        }</span>
+<span class="fc" id="L54">        buffW.write(sb.toString());</span>
+<span class="fc" id="L55">        buffW.close();</span>
+<span class="nc" id="L56">      } catch (Exception e) {</span>
+<span class="nc" id="L57">        e.printStackTrace();</span>
+<span class="nc" id="L58">        throw new RuntimeException(e);</span>
+<span class="fc" id="L59">      }</span>
+    }
+<span class="fc" id="L61">  }</span>
+
+  /**
+   * write out the data to the TXT files using letter templates.
+   *
+   * @param letterTemplate    path of the current TXT file.
+   * @param clientInfo        info of the client.
+   * @param txtOutputFilePath output path of the file.
+   */
+  public static void writeLettersToFiles(List&lt;String&gt; letterTemplate, ClientInfo clientInfo,
+      String txtOutputFilePath) {
+<span class="fc" id="L72">    final String fileName =</span>
+<span class="fc" id="L73">        System.getProperty(&quot;user.dir&quot;) + &quot;/&quot; + txtOutputFilePath + &quot;/&quot; + &quot;Letter_for_&quot;</span>
+<span class="fc" id="L74">            + clientInfo.getFirstName() + &quot;_&quot; + clientInfo.getLastName() + &quot;.txt&quot;;</span>
+<span class="fc" id="L75">    File dataOfEmailFiles = new File(fileName);</span>
+<span class="pc bpc" id="L76" title="1 of 2 branches missed.">    if (dataOfEmailFiles.exists()) {</span>
+<span class="nc" id="L77">      throw new IllegalArgumentException(&quot;File already exists&quot;);</span>
+    } else {
+      try {
+<span class="fc" id="L80">        dataOfEmailFiles.createNewFile();</span>
+<span class="nc" id="L81">      } catch (Exception e) {</span>
+<span class="nc" id="L82">        e.printStackTrace();</span>
+<span class="fc" id="L83">      }</span>
+      try {
+<span class="fc" id="L85">        FileWriter fileW = new FileWriter(fileName);</span>
+<span class="fc" id="L86">        BufferedWriter buffW = new BufferedWriter(fileW);</span>
+<span class="fc" id="L87">        StringBuilder sb = new StringBuilder();</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        for (String line : letterTemplate) {</span>
+<span class="fc" id="L89">          line = line.replaceAll(&quot;\\[\\[email&quot;, clientInfo.getEmail());</span>
+<span class="fc" id="L90">          line = line.replaceAll(&quot;\\[\\[first_name&quot;, clientInfo.getFirstName());</span>
+<span class="fc" id="L91">          line = line.replaceAll(&quot;\\[\\[last_name&quot;, clientInfo.getLastName());</span>
+<span class="fc" id="L92">          line = line.replaceAll(&quot;\\[\\[company_name&quot;, clientInfo.getCompanyName());</span>
+<span class="fc" id="L93">          line = line.replaceAll(&quot;\\[\\[address&quot;, clientInfo.getAddress());</span>
+<span class="fc" id="L94">          line = line.replaceAll(&quot;\\[\\[county&quot;, clientInfo.getCounty());</span>
+<span class="fc" id="L95">          line = line.replaceAll(&quot;\\[\\[state&quot;, clientInfo.getState());</span>
+<span class="fc" id="L96">          line = line.replaceAll(&quot;\\[\\[zip&quot;, clientInfo.getZip());</span>
+<span class="fc" id="L97">          line = line.replaceAll(&quot;\\[\\[email&quot;, clientInfo.getEmail());</span>
+<span class="fc" id="L98">          line = line.replaceAll(&quot;\\[\\[city&quot;, clientInfo.getCity());</span>
+<span class="fc" id="L99">          line = line.replaceAll(&quot;\\]&quot;, &quot;&quot;);</span>
+<span class="fc" id="L100">          sb.append(line);</span>
+<span class="fc" id="L101">          sb.append(&quot;\n&quot;);</span>
+<span class="fc" id="L102">        }</span>
+<span class="fc" id="L103">        buffW.write(sb.toString());</span>
+<span class="fc" id="L104">        buffW.close();</span>
+<span class="nc" id="L105">      } catch (Exception e) {</span>
+<span class="nc" id="L106">        e.printStackTrace();</span>
+<span class="nc" id="L107">        throw new RuntimeException(e);</span>
+<span class="fc" id="L108">      }</span>
+    }
+<span class="fc" id="L110">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

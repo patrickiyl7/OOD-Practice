@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CSVFileReaderConcurrent.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment6</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">CSVFileReaderConcurrent.java</span></div><h1>CSVFileReaderConcurrent.java</h1><pre class="source lang-java linenums">
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentHashMap;
+
+/**
+ * A class to read the CSV files.
+ */
+public class CSVFileReaderConcurrent {
+
+  /**
+   * Constructor of the Problem1.CSVFileReader class.
+   */
+<span class="nc" id="L17">  public CSVFileReaderConcurrent() {</span>
+<span class="nc" id="L18">  }</span>
+
+  /**
+   * Read in the data of the CSV files
+   *
+   * @param csvFilePath path of the current CSV file.
+   * @param map dataMap.
+   * @param completeSignal completeSignal
+   */
+  public static void readDataAndStore(String csvFilePath, ConcurrentHashMap&lt;String, BlockingQueue&lt;String[]&gt;&gt; map, CompleteSignal completeSignal)
+  {
+    try {
+      //System.out.println(&quot;reached producer&quot;);
+<span class="fc" id="L31">      String basePath = System.getProperty(&quot;user.dir&quot;);</span>
+<span class="fc" id="L32">      String resCSVFilePath = basePath + &quot;/&quot; + csvFilePath;</span>
+<span class="fc" id="L33">      List&lt;String&gt; lines = Files.readAllLines(Paths.get(resCSVFilePath));</span>
+<span class="fc" id="L34">      lines.remove(0);</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">      for (String line : lines) {</span>
+<span class="fc" id="L36">        String[] currData = line.split(&quot;,(?=(?:[^\&quot;]*\&quot;[^\&quot;]*\&quot;)*[^\&quot;]*$)&quot;);</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        for (int i = 0; i &lt; currData.length; i++) {</span>
+          //System.out.println(currData[i]);
+<span class="fc" id="L39">          currData[i] = currData[i].replace(&quot;\&quot;&quot;, &quot;&quot;);</span>
+          //System.out.println(currData[i]);
+        }
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">        if (currData.length == 6) {</span>
+<span class="fc" id="L43">          String[] dateClickPair = new String[2];</span>
+<span class="fc" id="L44">          dateClickPair[0] = currData[4];</span>
+<span class="fc" id="L45">          dateClickPair[1] = currData[5];</span>
+          //System.out.println(dateClickPair[0]);
+          //System.out.println(dateClickPair[1]);
+<span class="fc" id="L48">          String courseId = currData[0] + &quot;_&quot; + currData[1];</span>
+          //System.out.println(courseId);
+<span class="fc" id="L50">          BlockingQueue&lt;String[]&gt; blockingQueue = map.get(courseId);</span>
+<span class="fc" id="L51">          blockingQueue.add(dateClickPair);</span>
+        }
+<span class="fc" id="L53">      }</span>
+      //System.out.println(&quot;reached&quot;);
+<span class="fc" id="L55">      completeSignal.setCompleted(true);</span>
+<span class="nc" id="L56">    } catch (Exception e) {</span>
+<span class="nc" id="L57">      e.printStackTrace();</span>
+<span class="nc" id="L58">      throw new IllegalArgumentException(e);</span>
+<span class="fc" id="L59">    }</span>
+<span class="fc" id="L60">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

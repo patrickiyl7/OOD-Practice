@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ConcurrentProcessorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-11-11T19:19:24" hostname="patrickdeMacBook-Pro.local" time="0.092">
+  <properties/>
+  <testcase name="concurrentProcessor" classname="ConcurrentProcessorTest" time="0.092"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

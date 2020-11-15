@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConcurrentProcessor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment5</a> &gt; <a href="index.source.html" class="el_package">concurrentSolution</a> &gt; <span class="el_source">ConcurrentProcessor.java</span></div><h1>ConcurrentProcessor.java</h1><pre class="source lang-java linenums">package concurrentSolution;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingDeque;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
+import sequentialSolution.CSVFileReader;
+import sequentialSolution.DataBucket;
+
+/**
+ * Class to process the csv file and write out results.
+ */
+<span class="nc" id="L18">public class ConcurrentProcessor {</span>
+  private static final int DEFAULT_QUEUE_SIZE = 777777;
+
+  /**
+   * function to process the csv file and write out results.
+   * @param args csv files and threshold.
+   * @throws Exception to handle invalid input.
+   */
+  public static void ConcurrentProcessor(String[] args) throws Exception {
+<span class="fc" id="L27">    String coursesFilePath = args[0];</span>
+<span class="fc" id="L28">    String studentVlePath = args[1];</span>
+<span class="fc" id="L29">    String threshold = args[2];</span>
+<span class="fc" id="L30">    List&lt;String[]&gt; coursesInfo = CSVFileReader.readDataAndStore(coursesFilePath);</span>
+<span class="fc" id="L31">    ConcurrentDataBucket dataBucket = new ConcurrentDataBucket();</span>
+<span class="fc" id="L32">    CompleteSignal completeSignal = new CompleteSignal(false);</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">    for (int i = 0; i &lt; coursesInfo.size(); i++) {</span>
+<span class="fc" id="L34">      dataBucket.getMap().put(coursesInfo.get(i)[0] + &quot;_&quot; + coursesInfo.get(i)[1], new ArrayBlockingQueue&lt;String[]&gt;(DEFAULT_QUEUE_SIZE));</span>
+    }
+
+<span class="fc" id="L37">    int consumerNumThread = dataBucket.getMap().size();</span>
+<span class="fc" id="L38">    final ExecutorService threadPool = Executors.newFixedThreadPool(consumerNumThread + 1);</span>
+<span class="fc" id="L39">    threadPool.submit(new Producer(studentVlePath, dataBucket, completeSignal));</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">    for(String currentCourse : dataBucket.getMap().keySet())</span>
+    {
+      //System.out.println(&quot;reached&quot; + currentCourse);
+<span class="fc" id="L43">      threadPool.submit(new Consumer(currentCourse, completeSignal, dataBucket.getMap().get(currentCourse), new ConcurrentHashMap&lt;&gt;(), Integer.parseInt(threshold)));</span>
+<span class="fc" id="L44">    }</span>
+
+<span class="fc" id="L46">    threadPool.shutdown();</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">    while(!threadPool.isTerminated());</span>
+<span class="fc" id="L48">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

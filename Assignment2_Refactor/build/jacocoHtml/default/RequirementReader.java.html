@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RequirementReader.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment2_Refactor</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">RequirementReader.java</span></div><h1>RequirementReader.java</h1><pre class="source lang-java linenums">import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+public class RequirementReader {
+  Integer widthRequirement;
+  Integer heightRequirement;
+  Integer depthRequirement;
+  Integer shelvesRequirement;
+  Integer drawersRequirement;
+  Integer numOfCabinets;
+  Boolean wallMountedRequirement;
+  Boolean floorMountedRequirement;
+  String[] colorRequirement;
+
+<span class="nc" id="L24">  public RequirementReader(String fileName) throws IOException, ParseException {</span>
+<span class="nc" id="L25">    JSONParser jsonParser = new JSONParser();</span>
+<span class="nc" id="L26">    Object obj = jsonParser.parse(new FileReader(fileName));</span>
+<span class="nc" id="L27">    JSONObject jsonObject = (JSONObject) obj;</span>
+<span class="nc" id="L28">    widthRequirement = ((Number) jsonObject.get(&quot;width&quot;)).intValue();</span>
+<span class="nc" id="L29">    heightRequirement = ((Number) jsonObject.get(&quot;height&quot;)).intValue();</span>
+<span class="nc" id="L30">    depthRequirement = ((Number) jsonObject.get(&quot;depth&quot;)).intValue();</span>
+<span class="nc" id="L31">    shelvesRequirement = ((Number) jsonObject.get(&quot;shelves&quot;)).intValue();</span>
+<span class="nc" id="L32">    drawersRequirement = ((Number) jsonObject.get(&quot;drawers&quot;)).intValue();</span>
+<span class="nc" id="L33">    numOfCabinets = ((Number) jsonObject.get(&quot;drawers&quot;)).intValue();</span>
+<span class="nc" id="L34">    wallMountedRequirement = (Boolean) jsonObject.get(&quot;wallMounted&quot;);</span>
+<span class="nc" id="L35">    floorMountedRequirement = (Boolean) jsonObject.get(&quot;floorMounted&quot;);</span>
+<span class="nc" id="L36">    JSONArray colorRequirementJSON = (JSONArray) jsonObject.get(&quot;color&quot;);</span>
+<span class="nc" id="L37">    int length = colorRequirementJSON.size();</span>
+<span class="nc" id="L38">    colorRequirement = new String[length];</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">    for (int i = 0; i &lt; length; i++) {</span>
+<span class="nc" id="L40">      colorRequirement[i] = colorRequirementJSON.get(i).toString();</span>
+    }
+<span class="nc" id="L42">  }</span>
+
+  public int getWidthRequirement() {
+<span class="nc" id="L45">    return widthRequirement;</span>
+  }
+
+  public void setWidthRequirement(int widthRequirement) {
+<span class="nc" id="L49">    this.widthRequirement = widthRequirement;</span>
+<span class="nc" id="L50">  }</span>
+
+  public int getHeightRequirement() {
+<span class="nc" id="L53">    return heightRequirement;</span>
+  }
+
+  public void setHeightRequirement(int heightRequirement) {
+<span class="nc" id="L57">    this.heightRequirement = heightRequirement;</span>
+<span class="nc" id="L58">  }</span>
+
+  public int getDepthRequirement() {
+<span class="nc" id="L61">    return depthRequirement;</span>
+  }
+
+  public void setDepthRequirement(int depthRequirement) {
+<span class="nc" id="L65">    this.depthRequirement = depthRequirement;</span>
+<span class="nc" id="L66">  }</span>
+
+  public int getShelvesRequirement() {
+<span class="nc" id="L69">    return shelvesRequirement;</span>
+  }
+
+  public void setShelvesRequirement(int shelvesRequirement) {
+<span class="nc" id="L73">    this.shelvesRequirement = shelvesRequirement;</span>
+<span class="nc" id="L74">  }</span>
+
+  public int getDrawersRequirement() {
+<span class="nc" id="L77">    return drawersRequirement;</span>
+  }
+
+  public void setDrawersRequirement(int drawersRequirement) {
+<span class="nc" id="L81">    this.drawersRequirement = drawersRequirement;</span>
+<span class="nc" id="L82">  }</span>
+
+  public int getNumOfCabinets() {
+<span class="nc" id="L85">    return numOfCabinets;</span>
+  }
+
+  public void setNumOfCabinets(int numOfCabinets) {
+<span class="nc" id="L89">    this.numOfCabinets = numOfCabinets;</span>
+<span class="nc" id="L90">  }</span>
+
+  public Boolean getWallMountedRequirement() {
+<span class="nc" id="L93">    return wallMountedRequirement;</span>
+  }
+
+  public void setWallMountedRequirement(Boolean wallMountedRequirement) {
+<span class="nc" id="L97">    this.wallMountedRequirement = wallMountedRequirement;</span>
+<span class="nc" id="L98">  }</span>
+
+  public Boolean getFloorMountedRequirement() {
+<span class="nc" id="L101">    return floorMountedRequirement;</span>
+  }
+
+  public void setFloorMountedRequirement(Boolean floorMountedRequirement) {
+<span class="nc" id="L105">    this.floorMountedRequirement = floorMountedRequirement;</span>
+<span class="nc" id="L106">  }</span>
+
+  public String[] getColorRequirement() {
+<span class="nc" id="L109">    return colorRequirement;</span>
+  }
+
+  public void setColorRequirement(String[] colorRequirement) {
+<span class="nc" id="L113">    this.colorRequirement = colorRequirement;</span>
+<span class="nc" id="L114">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

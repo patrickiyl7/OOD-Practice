@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BaseballPlayer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab2</a> &gt; <a href="index.source.html" class="el_package">assignment1</a> &gt; <span class="el_source">BaseballPlayer.java</span></div><h1>BaseballPlayer.java</h1><pre class="source lang-java linenums">package assignment1;
+
+import java.util.Objects;
+
+public class BaseballPlayer extends Athlete {
+
+  private String team;
+  private Double averageBatting;
+  private Integer seasonHomeRun;
+
+  public BaseballPlayer(Name athletesName, Double height, Double weight, String league, String team,
+      Double averageBatting, Integer seasonHomeRun) {
+<span class="fc" id="L13">    super(athletesName, height, weight, league);</span>
+<span class="fc" id="L14">    this.averageBatting = averageBatting;</span>
+<span class="fc" id="L15">    this.seasonHomeRun = seasonHomeRun;</span>
+<span class="fc" id="L16">    this.team = team;</span>
+<span class="fc" id="L17">  }</span>
+
+  public BaseballPlayer(Name athletesName, Double height, Double weight, String team,
+      Double averageBatting, Integer seasonHomeRun) {
+<span class="nc" id="L21">    super(athletesName, height, weight);</span>
+<span class="nc" id="L22">    this.averageBatting = averageBatting;</span>
+<span class="nc" id="L23">    this.seasonHomeRun = seasonHomeRun;</span>
+<span class="nc" id="L24">    this.team = team;</span>
+<span class="nc" id="L25">  }</span>
+
+  public String getTeam() {
+<span class="fc" id="L28">    return team;</span>
+  }
+
+  public void setTeam(String team) {
+<span class="fc" id="L32">    this.team = team;</span>
+<span class="fc" id="L33">  }</span>
+
+  public Double getAverageBatting() {
+<span class="fc" id="L36">    return averageBatting;</span>
+  }
+
+  public void setAverageBatting(Double averageBatting) {
+<span class="fc" id="L40">    this.averageBatting = averageBatting;</span>
+<span class="fc" id="L41">  }</span>
+
+  public Integer getSeasonHomeRun() {
+<span class="fc" id="L44">    return seasonHomeRun;</span>
+  }
+
+  public void setSeasonHomeRun(Integer seasonHomeRun) {
+<span class="fc" id="L48">    this.seasonHomeRun = seasonHomeRun;</span>
+<span class="fc" id="L49">  }</span>
+
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L53" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L54">      return true;</span>
+    }
+<span class="fc bfc" id="L56" title="All 2 branches covered.">    if (!(o instanceof BaseballPlayer)) {</span>
+<span class="fc" id="L57">      return false;</span>
+    }
+<span class="fc" id="L59">    BaseballPlayer that = (BaseballPlayer) o;</span>
+<span class="pc bpc" id="L60" title="1 of 2 branches missed.">    return Objects.equals(getTeam(), that.getTeam()) &amp;&amp;</span>
+<span class="pc bpc" id="L61" title="1 of 2 branches missed.">        Objects.equals(getAverageBatting(), that.getAverageBatting()) &amp;&amp;</span>
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">        Objects.equals(getSeasonHomeRun(), that.getSeasonHomeRun());</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L67">    return Objects.hash(getTeam(), getAverageBatting(), getSeasonHomeRun());</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="fc" id="L72">    return &quot;BaseballPlayer{&quot; +</span>
+        &quot;team='&quot; + team + '\'' +
+        &quot;, averageBatting=&quot; + averageBatting +
+        &quot;, seasonHomeRun=&quot; + seasonHomeRun +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

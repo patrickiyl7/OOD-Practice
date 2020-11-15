@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SectionTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2019-10-22T22:06:04" hostname="patrickdeMacBook-Pro.local" time="0.01">
+  <properties/>
+  <testcase name="wheelChairSeatAssignedToNonWheelChairReqPerson" classname="SectionTest" time="0.007"/>
+  <testcase name="remainRegularSeatCount" classname="SectionTest" time="0.0"/>
+  <testcase name="remainWheelAccessibilitySeatCount" classname="SectionTest" time="0.001"/>
+  <testcase name="getColCapacity" classname="SectionTest" time="0.0"/>
+  <testcase name="getSeat" classname="SectionTest" time="0.0"/>
+  <testcase name="getRowCapacity" classname="SectionTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

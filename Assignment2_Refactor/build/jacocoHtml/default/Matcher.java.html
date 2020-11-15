@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Matcher.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment2_Refactor</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Matcher.java</span></div><h1>Matcher.java</h1><pre class="source lang-java linenums">import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+/**
+ * Read Json file from User and generate appropriate furniture set via filter.
+ */
+<span class="nc" id="L16">public class Matcher {</span>
+
+  public static void main(String[] args) throws Exception {
+
+<span class="nc" id="L20">      RequirementReader requirementReader = new RequirementReader(&quot;customerCriteria.json&quot;);</span>
+<span class="nc bnc" id="L21" title="All 4 branches missed.">      if (requirementReader.drawersRequirement &gt; 0 &amp;&amp; requirementReader.depthRequirement &lt; 18) {</span>
+<span class="nc" id="L22">        throw new IllegalArgumentException(&quot;Depth not enough for a drawer&quot;);</span>
+      }
+<span class="nc" id="L24">      IndividualStandardComponents individualStandardComponents = new IndividualStandardComponents();</span>
+<span class="nc" id="L25">      FurnitureDatabase furnitureDatabase = new FurnitureDatabase();</span>
+<span class="nc" id="L26">      List&lt;Cabinet&gt; cabinetProducts = furnitureDatabase.getCabinetProducts();</span>
+<span class="nc" id="L27">      List&lt;DoorAndDrawer&gt; drawerFrontProducts = furnitureDatabase.getDrawerFrontProducts();</span>
+<span class="nc" id="L28">      List&lt;DoorAndDrawer&gt; doorProducts = furnitureDatabase.getDoorProducts();</span>
+<span class="nc" id="L29">      List&lt;Cabinet&gt; resCabinet = cabinetMatcher(requirementReader.widthRequirement, requirementReader.heightRequirement,</span>
+<span class="nc" id="L30">          requirementReader.depthRequirement, requirementReader.shelvesRequirement, requirementReader.drawersRequirement, requirementReader.colorRequirement,</span>
+          requirementReader.wallMountedRequirement, requirementReader.floorMountedRequirement, cabinetProducts);
+<span class="nc" id="L32">      List&lt;DoorAndDrawer&gt; resDrawer = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L33">      int remainingHeightRequirement =</span>
+<span class="nc" id="L34">          requirementReader.heightRequirement - individualStandardComponents.getDrawerSizeSpec() * requirementReader.drawersRequirement;</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">      if (requirementReader.drawersRequirement &gt; 0) {</span>
+<span class="nc" id="L36">        resDrawer = drawerFrontMatcher(requirementReader.heightRequirement, requirementReader.depthRequirement, requirementReader.drawersRequirement,</span>
+            requirementReader.colorRequirement,
+            drawerFrontProducts);
+      }
+<span class="nc" id="L40">      List&lt;DoorAndDrawer&gt; resDoor = doorMatcher(remainingHeightRequirement,</span>
+          requirementReader.colorRequirement,
+          doorProducts);
+<span class="nc" id="L43">      individualStandardComponents.setNumOfCabinetFeet(feetCalculate(requirementReader.numOfCabinets, &quot;Required&quot;));</span>
+<span class="nc" id="L44">      ResultWriter resultWriter = new ResultWriter(resCabinet, resDrawer, resDoor, individualStandardComponents, requirementReader);</span>
+<span class="nc" id="L45">      resultWriter.GenerateResult();</span>
+<span class="nc" id="L46">  }</span>
+
+  /**
+   * cabinetMatcher function.
+   *
+   * @param widthRequirement widthRequirement
+   * @param heightRequirement heightRequirement
+   * @param depthRequirement depthRequirement
+   * @param shelvesRequirement shelvesRequirement
+   * @param drawersRequirement drawersRequirement
+   * @param colorRequirement colorRequirement
+   * @param wallMountedRequirement wallMountedRequirement
+   * @param floorMountedRequirement floorMountedRequirement
+   * @param cabinetProducts cabinetProducts
+   * @return matched cabinets.
+   */
+  private static List&lt;Cabinet&gt; cabinetMatcher(int widthRequirement, int heightRequirement,
+      int depthRequirement,
+      int shelvesRequirement, int drawersRequirement, String[] colorRequirement,
+      Boolean wallMountedRequirement,
+      Boolean floorMountedRequirement, List&lt;Cabinet&gt; cabinetProducts) {
+<span class="nc" id="L67">    List&lt;Cabinet&gt; res = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">    for (int i = 0; i &lt; cabinetProducts.size(); i++) {</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">      if (cabinetProducts.get(i).height == heightRequirement</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">          &amp;&amp; cabinetProducts.get(i).depth == depthRequirement</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">          &amp;&amp; cabinetProducts.get(i).isFloorMounted == floorMountedRequirement</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">          &amp;&amp; cabinetProducts.get(i).isWallMounted == wallMountedRequirement</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">          &amp;&amp; cabinetProducts.get(i).maxNumOfDrawers &gt;= drawersRequirement</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">          &amp;&amp; cabinetProducts.get(i).maxNumOfShelves &gt;= shelvesRequirement</span>
+      ) {
+<span class="nc bnc" id="L76" title="All 2 branches missed.">        if (colorRequirementCheck(cabinetProducts.get(i), colorRequirement)) {</span>
+<span class="nc" id="L77">          res.add(cabinetProducts.get(i));</span>
+        }
+      }
+    }
+<span class="nc" id="L81">    return res;</span>
+  }
+
+  /**
+   * drawerFrontMatcher function.
+   *
+   * @param heightRequirement heightRequirement
+   * @param depthRequirement depthRequirement
+   * @param drawersRequirement drawersRequirement
+   * @param colorRequirement colorRequirement
+   * @param drawerFrontProducts drawerFrontProducts
+   * @return matched drawer front.
+   */
+  private static List&lt;DoorAndDrawer&gt; drawerFrontMatcher(int heightRequirement,
+      int depthRequirement,
+      int drawersRequirement, String[] colorRequirement,
+      List&lt;DoorAndDrawer&gt; drawerFrontProducts) {
+<span class="nc bnc" id="L98" title="All 4 branches missed.">    if (drawersRequirement &lt; 1 || depthRequirement &lt; 18) {</span>
+<span class="nc" id="L99">      return null;</span>
+    }
+<span class="nc" id="L101">    List&lt;DoorAndDrawer&gt; res = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">    for (int i = 0; i &lt; drawerFrontProducts.size(); i++) {</span>
+<span class="nc bnc" id="L103" title="All 2 branches missed.">      if (colorRequirementCheck(drawerFrontProducts.get(i), colorRequirement)) {</span>
+<span class="nc" id="L104">        res.add(drawerFrontProducts.get(i));</span>
+      }
+    }
+<span class="nc" id="L107">    return res;</span>
+  }
+
+  /**
+   * doorMatcher function.
+   *
+   * @param heightRequirement heightRequirement
+   * @param colorRequirement colorRequirement
+   * @param doorProducts doorProducts
+   * @return matched door and drawer
+   */
+  private static List&lt;DoorAndDrawer&gt; doorMatcher(int heightRequirement,
+      String[] colorRequirement,
+      List&lt;DoorAndDrawer&gt; doorProducts) {
+
+<span class="nc" id="L122">    List&lt;DoorAndDrawer&gt; res = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">    for (int i = 0; i &lt; doorProducts.size(); i++) {</span>
+<span class="nc bnc" id="L124" title="All 2 branches missed.">      if (doorProducts.get(i).height == heightRequirement) {</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">        if (colorRequirementCheck(doorProducts.get(i), colorRequirement)) {</span>
+<span class="nc" id="L126">          res.add(doorProducts.get(i));</span>
+        }
+      }
+    }
+<span class="nc" id="L130">    return res;</span>
+  }
+
+  /**
+   * feetCalculate function.
+   * @param numOfCabinet numOfCabinet
+   * @param feetRequirement feetRequirement
+   * @return feetCalculate.
+   */
+  public static int feetCalculate(Integer numOfCabinet, String feetRequirement) {
+<span class="nc bnc" id="L140" title="All 4 branches missed.">    if (feetRequirement.equals(&quot;Required&quot;) || feetRequirement.equals(&quot;Optional&quot;)) {</span>
+<span class="nc" id="L141">      int additionFeetRequirement = ((int) Math.ceil(numOfCabinet / 2.0) - 1) * 2;</span>
+<span class="nc" id="L142">      return 4 + additionFeetRequirement;</span>
+    } else {
+<span class="nc" id="L144">      return 0;</span>
+    }
+  }
+
+  /**
+   * colorRequirementCheck function.
+   * @param product product
+   * @param colorRequirement colorRequirement
+   * @return if it matches the color requirement.
+   */
+  public static boolean colorRequirementCheck(Furniture product, String[] colorRequirement) {
+
+<span class="nc" id="L156">    int colorRequirementCount = 0;</span>
+<span class="nc bnc" id="L157" title="All 2 branches missed.">    for (int j = 0; j &lt; colorRequirement.length; j++) {</span>
+<span class="nc bnc" id="L158" title="All 2 branches missed.">      for (int k = 0; k &lt; product.color.length; k++) {</span>
+<span class="nc bnc" id="L159" title="All 2 branches missed.">        if (colorRequirement[j].equals(product.color[k])) {</span>
+<span class="nc" id="L160">          colorRequirementCount++;</span>
+        }
+      }
+    }
+<span class="nc bnc" id="L164" title="All 2 branches missed.">    if (colorRequirementCount == colorRequirement.length) {</span>
+<span class="nc" id="L165">      return true;</span>
+    }
+<span class="nc" id="L167">    return false;</span>
+  }
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

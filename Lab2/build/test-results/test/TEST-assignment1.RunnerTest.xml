@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="assignment1.RunnerTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2019-10-05T01:48:54" hostname="patrickdeMacBook-Pro.local" time="0.003">
+  <properties/>
+  <testcase name="setBestHalfMarathonTime" classname="assignment1.RunnerTest" time="0.001"/>
+  <testcase name="testToString" classname="assignment1.RunnerTest" time="0.0"/>
+  <testcase name="getBestFiveKTime" classname="assignment1.RunnerTest" time="0.001"/>
+  <testcase name="setFavoriteRunningEvent" classname="assignment1.RunnerTest" time="0.0"/>
+  <testcase name="getBestHalfMarathonTime" classname="assignment1.RunnerTest" time="0.0"/>
+  <testcase name="testHashCode" classname="assignment1.RunnerTest" time="0.0"/>
+  <testcase name="testEquals" classname="assignment1.RunnerTest" time="0.001"/>
+  <testcase name="setBestFiveKTime" classname="assignment1.RunnerTest" time="0.0"/>
+  <testcase name="getFavoriteRunningEvent" classname="assignment1.RunnerTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

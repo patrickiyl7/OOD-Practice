@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Restaurant.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab2</a> &gt; <a href="index.source.html" class="el_package">assignment2</a> &gt; <span class="el_source">Restaurant.java</span></div><h1>Restaurant.java</h1><pre class="source lang-java linenums">package assignment2;
+
+import java.util.Objects;
+
+public class Restaurant {
+  private String restaurantName;
+  private Address address;
+  private Menu menu;
+  private Boolean openOrClosed;
+
+<span class="fc" id="L11">  public Restaurant(String restaurantName, Address address, Menu menu, Boolean openOrClosed) {</span>
+<span class="fc" id="L12">    this.restaurantName = restaurantName;</span>
+<span class="fc" id="L13">    this.address = address;</span>
+<span class="fc" id="L14">    this.menu = menu;</span>
+<span class="fc" id="L15">    this.openOrClosed = openOrClosed;</span>
+<span class="fc" id="L16">  }</span>
+
+  public String getRestaurantName() {
+<span class="fc" id="L19">    return restaurantName;</span>
+  }
+
+  public void setRestaurantName(String restaurantName) {
+<span class="fc" id="L23">    this.restaurantName = restaurantName;</span>
+<span class="fc" id="L24">  }</span>
+
+  public Address getAddress() {
+<span class="fc" id="L27">    return address;</span>
+  }
+
+  public void setAddress(Address address) {
+<span class="fc" id="L31">    this.address = address;</span>
+<span class="fc" id="L32">  }</span>
+
+  public Menu getMenu() {
+<span class="fc" id="L35">    return menu;</span>
+  }
+
+  public void setMenu(Menu menu) {
+<span class="fc" id="L39">    this.menu = menu;</span>
+<span class="fc" id="L40">  }</span>
+
+  public Boolean getOpenOrClosed() {
+<span class="fc" id="L43">    return openOrClosed;</span>
+  }
+
+  public void setOpenOrClosed(Boolean openOrClosed) {
+<span class="fc" id="L47">    this.openOrClosed = openOrClosed;</span>
+<span class="fc" id="L48">  }</span>
+
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L52" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L53">      return true;</span>
+    }
+<span class="fc bfc" id="L55" title="All 2 branches covered.">    if (!(o instanceof Restaurant)) {</span>
+<span class="fc" id="L56">      return false;</span>
+    }
+<span class="fc" id="L58">    Restaurant that = (Restaurant) o;</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">    return Objects.equals(getRestaurantName(), that.getRestaurantName()) &amp;&amp;</span>
+<span class="pc bpc" id="L60" title="1 of 2 branches missed.">        Objects.equals(getAddress(), that.getAddress()) &amp;&amp;</span>
+<span class="pc bpc" id="L61" title="1 of 2 branches missed.">        Objects.equals(getMenu(), that.getMenu()) &amp;&amp;</span>
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">        Objects.equals(getOpenOrClosed(), that.getOpenOrClosed());</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L67">    return Objects.hash(getRestaurantName(), getAddress(), getMenu(), getOpenOrClosed());</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="fc" id="L72">    return &quot;Restaurant{&quot; +</span>
+        &quot;restaurantName='&quot; + restaurantName + '\'' +
+        &quot;, address=&quot; + address +
+        &quot;, menu=&quot; + menu +
+        &quot;, openOrClosed=&quot; + openOrClosed +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
